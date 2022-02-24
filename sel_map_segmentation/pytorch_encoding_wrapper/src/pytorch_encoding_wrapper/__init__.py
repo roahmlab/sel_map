@@ -1,0 +1,2 @@
+from .PytorchEncodingWrapper import PytorchEncodingWrapper as SemsegNetworkWrapper
+

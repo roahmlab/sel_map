@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sel_map_mapper</name>
+  <version>0.0.0</version>
+  <description>The sel_map_mapper package</description>
+
+  <maintainer email="author@todo.todo">author</maintainer>
+
+  <license>TODO</license>
+
+  <exec_depend>sel_map_mesh</exec_depend>
+  <exec_depend>sel_map_segmentation</exec_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

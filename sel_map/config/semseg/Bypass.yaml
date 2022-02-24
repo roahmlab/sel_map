@@ -1,0 +1,7 @@
+semseg:
+  package: ""
+  model: ""
+  extra_args: []
+  num_labels: 0
+  ongpu_projection: False
+  onehot_projection: False

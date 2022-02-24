@@ -1,0 +1,9 @@
+semseg:
+  package: pytorch_encoding_wrapper
+  model: EncNet_ResNet101s_PContext
+  extra_args: []
+  num_labels: 59
+  ongpu_projection: True
+  # The following is only useful for when there are many labels, like 120+
+  # It should be benchmarked on a per-system basis
+  onehot_projection: False

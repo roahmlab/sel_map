@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/adam/ros1/mesh_tools/rviz_map_plugin/install/setup.sh

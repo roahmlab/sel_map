@@ -1,0 +1,254 @@
+# Properties for Carla Semantic Labels
+None:
+  name: 'None'
+  index: 0
+  color:
+    R: 255
+    G: 255
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Building:
+  name: 'Building'
+  index: 1
+  color:
+    R: 70
+    G: 70
+    B: 70
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Fences:
+  name: 'Fences'
+  index: 2
+  color:
+    R: 100
+    G: 40
+    B: 40
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Other:
+  name: 'Other'
+  index: 3
+  color:
+    R: 55
+    G: 90
+    B: 80
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Pedestrian:
+  name: 'Pedestrian'
+  index: 4
+  color:
+    R: 220
+    G: 20
+    B: 60
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Pole:
+  name: 'Pole'
+  index: 5
+  color:
+    R: 153
+    G: 153
+    B: 153
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+RoadLines:
+  name: 'RoadLines'
+  index: 6
+  color:
+    R: 157
+    G: 234
+    B: 50
+  friction:
+    mean: 0.75
+    variance: 0.05
+  soft_contact: []
+Road:
+  name: 'Road'
+  index: 7
+  color:
+    R: 128
+    G: 64
+    B: 128
+  friction:
+    mean: 0.75
+    variance: 0.05
+  soft_contact: []
+Sidewalk:
+  name: 'Sidewalk'
+  index: 8
+  color:
+    R: 244
+    G: 35
+    B: 232
+  friction:
+    mean: 0.6
+    variance: 0.1
+  soft_contact: []
+Vegetation:
+  name: 'Vegetation'
+  index: 9
+  color:
+    R: 107
+    G: 142
+    B: 35
+  friction:
+    mean: 0.5
+    variance: 0.15
+  soft_contact: []
+Vehicle:
+  name: 'Vehicle'
+  index: 10
+  color:
+    R: 0
+    G: 0
+    B: 142
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Wall:
+  name: 'Wall'
+  index: 11
+  color:
+    R: 102
+    G: 102
+    B: 156
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+TrafficSign:
+  name: 'TrafficSign'
+  index: 12
+  color:
+    R: 220
+    G: 220
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Sky:
+  name: 'Sky'
+  index: 13
+  color:
+    R: 70
+    G: 130
+    B: 180
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Ground:
+  name: 'Ground'
+  index: 14
+  color:
+    R: 81
+    G: 0
+    B: 81
+  friction:
+    mean: 0.5
+    variance: 0.15
+  soft_contact: []
+Bridge:
+  name: 'Bridge'
+  index: 15
+  color:
+    R: 150
+    G: 100
+    B: 100
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+RailTrack:
+  name: 'RailTrack'
+  index: 16
+  color:
+    R: 230
+    G: 150
+    B: 140
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+GuardRail:
+  name: 'GuardRail'
+  index: 17
+  color:
+    R: 180
+    G: 165
+    B: 180
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+TrafficLight:
+  name: 'TrafficLight'
+  index: 18
+  color:
+    R: 250
+    G: 170
+    B: 30
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Static:
+  name: 'Static'
+  index: 19
+  color:
+    R: 110
+    G: 190
+    B: 160
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Dynamic:
+  name: 'Dynamic'
+  index: 20
+  color:
+    R: 170
+    G: 120
+    B: 50
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+Water:
+  name: 'Water'
+  index: 21
+  color:
+    R: 45
+    G: 60
+    B: 150
+  friction:
+    mean: 0.3
+    variance: 0.15
+  soft_contact: []
+Terrain:
+  name: 'Terrain'
+  index: 22
+  color:
+    R: 145
+    G: 170
+    B: 100
+  friction:
+    mean: 0.4
+    variance: 0.1
+  soft_contact: []

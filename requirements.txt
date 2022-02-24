@@ -1,0 +1,8 @@
+yacs==0.1.8
+setuptools>=60.5.0
+tqdm>=4.62.3
+portalocker>=2.3.2
+numpy>=1.18.4
+opencv-python>=4.5.3.56
+Pillow>=8.3.2
+scipy>=1.5.4

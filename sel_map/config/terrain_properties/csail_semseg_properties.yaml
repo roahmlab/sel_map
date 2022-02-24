@@ -1,0 +1,1656 @@
+# Properties for CSAIL Semantic Segmentation Network classes
+
+wall:
+  name: 'wall'
+  index: 0
+  color:
+    R: 120
+    G: 120
+    B: 120
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+building:
+  name: 'buiding'
+  index: 1
+  color:
+    R: 180
+    G: 120
+    B: 120
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+sky:
+  name: 'sky'
+  index: 2
+  color:
+    R: 6
+    G: 230
+    B: 230
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+floor:
+  name: 'floor'
+  index: 3
+  color:
+    R: 80
+    G: 50
+    B: 50
+  friction:
+    mean: 0.54
+    variance: 0.07
+  soft_contact: []
+tree:
+  name: 'tree'
+  index: 4
+  color:
+    R: 4
+    G: 200
+    B: 3
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+ceiling:
+  name: 'ceiling'
+  index: 5
+  color:
+    R: 120
+    G: 120
+    B: 80
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+road:
+  name: 'road'
+  index: 6
+  color:
+    R: 140
+    G: 140
+    B: 140
+  friction:
+    mean: 0.7
+    variance: 0.05
+  soft_contact: []
+bed:
+  name: 'bed'
+  index: 7
+  color:
+    R: 204
+    G: 5
+    B: 255
+  friction:
+    mean: 0.4
+    variance: 0.1
+  soft_contact:
+    k: 10.0
+    d: 5.0
+window:
+  name: 'window'
+  index: 8
+  color:
+    R: 230
+    G: 230
+    B: 230
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+grass:
+  name: 'grass'
+  index: 9
+  color:
+    R: 4
+    G: 250
+    B: 7
+  friction:
+    mean: 0.3
+    variance: 0.12
+  soft_contact: []
+cabinet:
+  name: 'cabinet'
+  index: 10
+  color:
+    R: 224
+    G: 5
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+sidewalk:
+  name: 'sidewalk'
+  index: 11
+  color:
+    R: 235
+    G: 255
+    B: 7
+  friction:
+    mean: 0.7
+    variance: 0.04
+  soft_contact: []
+person:
+  name: 'person'
+  index: 12
+  color:
+    R: 150
+    G: 5
+    B: 61
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+ground:
+  name: 'ground'
+  index: 13
+  color:
+    R: 120
+    G: 120
+    B: 70
+  friction:
+    mean: 0.4
+    variance: 0.15
+  soft_contact: []
+door:
+  name: 'door'
+  index: 14
+  color:
+    R: 8
+    G: 255
+    B: 51
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+table:
+  name: 'table'
+  index: 15
+  color:
+    R: 255
+    G: 6
+    B: 82
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+mountain:
+  name: 'mountain'
+  index: 16
+  color:
+    R: 143
+    G: 255
+    B: 140
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+plant:
+  name: 'plant'
+  index: 17
+  color:
+    R: 204
+    G: 255
+    B: 4
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+curtain:
+  name: 'curtain'
+  index: 18
+  color:
+    R: 255
+    G: 51
+    B: 7
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+chair:
+  name: 'ceiling'
+  index: 19
+  color:
+    R: 204
+    G: 70
+    B: 3
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+car:
+  name: 'car'
+  index: 20
+  color:
+    R: 0
+    G: 102
+    B: 200
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+water:
+  name: 'water'
+  index: 21
+  color:
+    R: 61
+    G: 230
+    B: 250
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+painting:
+  name: 'painting'
+  index: 22
+  color:
+    R: 255
+    G: 6
+    B: 51
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+sofa:
+  name: 'sofa'
+  index: 23
+  color:
+    R: 11
+    G: 102
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+shelf:
+  name: 'shelf'
+  index: 24
+  color:
+    R: 255
+    G: 7
+    B: 71
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+house:
+  name: 'house'
+  index: 25
+  color:
+    R: 255
+    G: 9
+    B: 224
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+sea:
+  name: 'sea'
+  index: 26
+  color:
+    R: 9
+    G: 7
+    B: 230
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+mirror:
+  name: 'mirror'
+  index: 27
+  color:
+    R: 220
+    G: 220
+    B: 220
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+rug:
+  name: 'rug'
+  index: 28
+  color:
+    R: 255
+    G: 9
+    B: 92
+  friction:
+    mean: 0.8
+    variance: 0.03
+  soft_contact: []
+field:
+  name: 'field'
+  index: 29
+  color:
+    R: 112
+    G: 9
+    B: 225
+  friction:
+    mean: 0.4
+    variance: 0.07
+  soft_contact: []
+armchair:
+  name: 'armchair'
+  index: 30
+  color:
+    R: 8
+    G: 255
+    B: 214
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+seat:
+  name: 'seat'
+  index: 31
+  color:
+    R: 7
+    G: 255
+    B: 224
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+fence:
+  name: 'fence'
+  index: 32
+  color:
+    R: 255
+    G: 184
+    B: 6
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+desk:
+  name: 'desk'
+  index: 33
+  color:
+    R: 10
+    G: 255
+    B: 71
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+rock:
+  name: 'rock'
+  index: 34
+  color:
+    R: 255
+    G: 41
+    B: 10
+  friction:
+    mean: 0.7
+    variance: 0.1
+  soft_contact: []
+wardrobe:
+  name: 'wardrobe'
+  index: 35
+  color:
+    R: 7
+    G: 255
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+lamp:
+  name: 'lamp'
+  index: 36
+  color:
+    R: 224
+    G: 255
+    B: 8
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bathtub:
+  name: 'bathtub'
+  index: 37
+  color:
+    R: 102
+    G: 8
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+railing:
+  name: 'railing'
+  index: 38
+  color:
+    R: 255
+    G: 61
+    B: 6
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+cushion:
+  name: 'cushion'
+  index: 39
+  color:
+    R: 255
+    G: 194
+    B: 7
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+pedestal:
+  name: 'pedestal'
+  index: 40
+  color:
+    R: 255
+    G: 122
+    B: 8
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+box:
+  name: 'box'
+  index: 41
+  color:
+    R: 0
+    G: 255
+    B: 20
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+column:
+  name: 'column'
+  index: 42
+  color:
+    R: 255
+    G: 8
+    B: 41
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+signboard:
+  name: 'signboard'
+  index: 43
+  color:
+    R: 255
+    G: 5
+    B: 153
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+dresser:
+  name: 'dresser'
+  index: 44
+  color:
+    R: 6
+    G: 51
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+counter:
+  name: 'counter'
+  index: 45
+  color:
+    R: 235
+    G: 12
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+sand:
+  name: 'sand'
+  index: 46
+  color:
+    R: 160
+    G: 150
+    B: 20
+  friction:
+    mean: 0.4
+    variance: 0.05
+  soft_contact:
+    k: 5
+    d: 20
+sink:
+  name: 'sink'
+  index: 47
+  color:
+    R: 0
+    G: 163
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+skyscraper:
+  name: 'skyscraper'
+  index: 48
+  color:
+    R: 140
+    G: 140
+    B: 140
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+fireplace:
+  name: 'fireplace'
+  index: 49
+  color:
+    R: 250
+    G: 10
+    B: 15
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+refrigerator:
+  name: 'refridgerator'
+  index: 50
+  color:
+    R: 20
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+grandstand:
+  name: 'grandstand'
+  index: 51
+  color:
+    R: 31
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+path:
+  name: 'path'
+  index: 52
+  color:
+    R: 255
+    G: 31
+    B: 0
+  friction:
+    mean: 0.7
+    variance: 0.12
+  soft_contact: []
+stairs:
+  name: 'stairs'
+  index: 53
+  color:
+    R: 255
+    G: 224
+    B: 0
+  friction:
+    mean: 0.5
+    variance: 0.15
+  soft_contact: []
+runway:
+  name: 'runway'
+  index: 54
+  color:
+    R: 153
+    G: 255
+    B: 0
+  friction:
+    mean: 0.7
+    variance: 0.12
+  soft_contact: []
+case:
+  name: 'case'
+  index: 55
+  color:
+    R: 0
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+pooltable:
+  name: 'pooltable'
+  index: 56
+  color:
+    R: 255
+    G: 71
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+pillow:
+  name: 'pillow'
+  index: 57
+  color:
+    R: 0
+    G: 235
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+screen:
+  name: 'screen'
+  index: 58
+  color:
+    R: 0
+    G: 173
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+stairway:
+  name: 'stairway'
+  index: 59
+  color:
+    R: 31
+    G: 0
+    B: 255
+  friction:
+    mean: 0.7
+    variance: 0.12
+  soft_contact: []
+river:
+  name: 'river'
+  index: 60
+  color:
+    R: 11
+    G: 200
+    B: 200
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bridge:
+  name: 'bridge'
+  index: 61
+  color:
+    R: 255
+    G: 82
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bookcase:
+  name: 'bookcase'
+  index: 62
+  color:
+    R: 0
+    G: 255
+    B: 245
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+blind:
+  name: 'blind'
+  index: 63
+  color:
+    R: 0
+    G: 61
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+coffeetable:
+  name: 'coffeetable'
+  index: 64
+  color:
+    R: 0
+    G: 255
+    B: 112
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+toilet:
+  name: 'toilet'
+  index: 65
+  color:
+    R: 0
+    G: 255
+    B: 133
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+flower:
+  name: 'flower'
+  index: 66
+  color:
+    R: 255
+    G: 0
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+book:
+  name: 'book'
+  index: 67
+  color:
+    R: 255
+    G: 163
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+hill:
+  name: 'hill'
+  index: 68
+  color:
+    R: 255
+    G: 102
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bench:
+  name: 'bench'
+  index: 69
+  color:
+    R: 194
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+countertop:
+  name: 'countertop'
+  index: 70
+  color:
+    R: 0
+    G: 143
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+stove:
+  name: 'stove'
+  index: 71
+  color:
+    R: 51
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+palm:
+  name: 'palm'
+  index: 72
+  color:
+    R: 0
+    G: 82
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+kitchenisland:
+  name: 'kitchenisland'
+  index: 73
+  color:
+    R: 0
+    G: 255
+    B: 41
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+computer:
+  name: 'computer'
+  index: 74
+  color:
+    R: 0
+    G: 255
+    B: 173
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+swivelchair:
+  name: 'swivelchair'
+  index: 75
+  color:
+    R: 10
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+boat:
+  name: 'boat'
+  index: 76
+  color:
+    R: 173
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bar:
+  name: 'bar'
+  index: 77
+  color:
+    R: 0
+    G: 255
+    B: 153
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+arcade:
+  name: 'arcade'
+  index: 78
+  color:
+    R: 255
+    G: 92
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+hovel:
+  name: 'hovel'
+  index: 79
+  color:
+    R: 255
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bus:
+  name: 'bus'
+  index: 80
+  color:
+    R: 255
+    G: 0
+    B: 245
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+towel:
+  name: 'towel'
+  index: 81
+  color:
+    R: 255
+    G: 0
+    B: 102
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+light:
+  name: 'light'
+  index: 82
+  color:
+    R: 255
+    G: 173
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+truck:
+  name: 'truck'
+  index: 83
+  color:
+    R: 255
+    G: 0
+    B: 20
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+tower:
+  name: 'tower'
+  index: 84
+  color:
+    R: 255
+    G: 184
+    B: 184
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+chandelier:
+  name: 'chandelier'
+  index: 85
+  color:
+    R: 0
+    G: 31
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+awning:
+  name: 'awning'
+  index: 86
+  color:
+    R: 0
+    G: 255
+    B: 61
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+streetlight:
+  name: 'streetlight'
+  index: 87
+  color:
+    R: 0
+    G: 71
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+booth:
+  name: 'booth'
+  index: 88
+  color:
+    R: 255
+    G: 0
+    B: 204
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+television:
+  name: 'television'
+  index: 89
+  color:
+    R: 0
+    G: 255
+    B: 194
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+airplane:
+  name: 'airplane'
+  index: 90
+  color:
+    R: 0
+    G: 255
+    B: 82
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+dirt:
+  name: 'dirt'
+  index: 91
+  color:
+    R: 0
+    G: 10
+    B: 255
+  friction:
+    mean: 0.4
+    variance: 0.15
+  soft_contact: []
+clothes:
+  name: 'clothes'
+  index: 92
+  color:
+    R: 0
+    G: 112
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+pole:
+  name: 'pole'
+  index: 93
+  color:
+    R: 51
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+soil:
+  name: 'soil'
+  index: 94
+  color:
+    R: 0
+    G: 194
+    B: 255
+  friction:
+    mean: 0.5
+    variance: 0.07
+  soft_contact: []
+bannister:
+  name: 'bannister'
+  index: 95
+  color:
+    R: 0
+    G: 122
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+escalator:
+  name: 'escalator'
+  index: 96
+  color:
+    R: 0
+    G: 255
+    B: 163
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+ottoman:
+  name: 'ottoman'
+  index: 97
+  color:
+    R: 255
+    G: 153
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bottle:
+  name: 'bottle'
+  index: 98
+  color:
+    R: 0
+    G: 255
+    B: 10
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+sideboard:
+  name: 'sideboard'
+  index: 99
+  color:
+    R: 255
+    G: 112
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+poster:
+  name: 'poster'
+  index: 100
+  color:
+    R: 143
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+stage:
+  name: 'stage'
+  index: 101
+  color:
+    R: 82
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+van:
+  name: 'van'
+  index: 102
+  color:
+    R: 163
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+ship:
+  name: 'ship'
+  index: 103
+  color:
+    R: 155
+    G: 235
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+fountain:
+  name: 'fountain'
+  index: 104
+  color:
+    R: 8
+    G: 184
+    B: 170
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+conveyer:
+  name: 'conveyer'
+  index: 105
+  color:
+    R: 133
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+canopy:
+  name: 'canopy'
+  index: 106
+  color:
+    R: 0
+    G: 255
+    B: 92
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+washer:
+  name: 'washer'
+  index: 107
+  color:
+    R: 184
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+toy:
+  name: 'toy'
+  index: 108
+  color:
+    R: 255
+    G: 0
+    B: 31
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+pool:
+  name: 'pool'
+  index: 109
+  color:
+    R: 0
+    G: 184
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+stool:
+  name: 'stool'
+  index: 110
+  color:
+    R: 0
+    G: 214
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+barrel:
+  name: 'barrel'
+  index: 111
+  color:
+    R: 255
+    G: 0
+    B: 112
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+basket:
+  name: 'basket'
+  index: 112
+  color:
+    R: 92
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+waterfall:
+  name: 'waterfall'
+  index: 113
+  color:
+    R: 0
+    G: 224
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+tent:
+  name: 'tent'
+  index: 114
+  color:
+    R: 112
+    G: 224
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bag:
+  name: 'bag'
+  index: 115
+  color:
+    R: 70
+    G: 184
+    B: 160
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+minibike:
+  name: 'minibike'
+  index: 116
+  color:
+    R: 163
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+cradle:
+  name: 'cradel'
+  index: 117
+  color:
+    R: 153
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+oven:
+  name: 'oven'
+  index: 118
+  color:
+    R: 71
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+ball:
+  name: 'ball'
+  index: 119
+  color:
+    R: 255
+    G: 0
+    B: 163
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+food:
+  name: 'food'
+  index: 120
+  color:
+    R: 255
+    G: 204
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+step:
+  name: 'step'
+  index: 121
+  color:
+    R: 255
+    G: 0
+    B: 143
+  friction:
+    mean: 0.4
+    variance: 0.08
+  soft_contact: []
+tank:
+  name: 'tank'
+  index: 122
+  color:
+    R: 0
+    G: 255
+    B: 235
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+tradename:
+  name: 'tradename'
+  index: 123
+  color:
+    R: 133
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+microwave:
+  name: 'microwave'
+  index: 124
+  color:
+    R: 255
+    G: 0
+    B: 235
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+flowerpot:
+  name: 'flowerpot'
+  index: 125
+  color:
+    R: 245
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+animal:
+  name: 'animal'
+  index: 126
+  color:
+    R: 255
+    G: 0
+    B: 122
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bicycle:
+  name: 'bicycle'
+  index: 127
+  color:
+    R: 255
+    G: 245
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+lake:
+  name: 'lake'
+  index: 128
+  color:
+    R: 10
+    G: 190
+    B: 212
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+dishwasher:
+  name: 'dishwasher'
+  index: 129
+  color:
+    R: 214
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+scree:
+  name: 'screen'
+  index: 130
+  color:
+    R: 0
+    G: 204
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+blanket:
+  name: 'blanket'
+  index: 131
+  color:
+    R: 20
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+sculpture:
+  name: 'sculpture'
+  index: 132
+  color:
+    R: 255
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+hood:
+  name: 'hood'
+  index: 133
+  color:
+    R: 0
+    G: 153
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+sconce:
+  name: 'sconce'
+  index: 134
+  color:
+    R: 0
+    G: 41
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+vase:
+  name: 'vase'
+  index: 135
+  color:
+    R: 0
+    G: 255
+    B: 204
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+trafficlight:
+  name: 'trafficlight'
+  index: 136
+  color:
+    R: 41
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+tray:
+  name: 'tray'
+  index: 137
+  color:
+    R: 41
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+ashcan:
+  name: 'ashcan'
+  index: 138
+  color:
+    R: 173
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+fan:
+  name: 'fan'
+  index: 139
+  color:
+    R: 0
+    G: 245
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+pier:
+  name: 'pier'
+  index: 140
+  color:
+    R: 71
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+crt:
+  name: 'crt'
+  index: 141
+  color:
+    R: 122
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+plate:
+  name: 'plate'
+  index: 142
+  color:
+    R: 0
+    G: 255
+    B: 184
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+monitor:
+  name: 'monitor'
+  index: 143
+  color:
+    R: 0
+    G: 92
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bulletinboard:
+  name: 'bulletinboard'
+  index: 144
+  color:
+    R: 184
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+shower:
+  name: 'shower'
+  index: 145
+  color:
+    R: 0
+    G: 133
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+radiator:
+  name: 'radiator'
+  index: 146
+  color:
+    R: 255
+    G: 214
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+glass:
+  name: 'glass'
+  index: 147
+  color:
+    R: 25
+    G: 194
+    B: 194
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+clock:
+  name: 'clock'
+  index: 148
+  color:
+    R: 102
+    G: 255
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+flag:
+  name: 'flag'
+  index: 149
+  color:
+    R: 92
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []

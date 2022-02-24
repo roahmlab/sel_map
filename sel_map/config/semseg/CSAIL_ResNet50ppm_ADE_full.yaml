@@ -1,0 +1,9 @@
+semseg:
+  package: mit_semseg_wrapper
+  model: ade20k-resnet50dilated-ppm_deepsup.yaml
+  extra_args: []
+  num_labels: 150
+  ongpu_projection: True
+  # The following is only useful for when there are many labels, like 120+
+  # It should be benchmarked on a per-system basis
+  onehot_projection: False

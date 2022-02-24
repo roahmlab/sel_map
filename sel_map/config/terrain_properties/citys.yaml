@@ -1,0 +1,377 @@
+# Properties for FastSCNN cityscapes
+# https://github.com/mcordts/cityscapesScripts/blob/master/cityscapesscripts/helpers/labels.py
+
+# unlabeled:
+#   name: 'unlabeled'
+#   index: 0
+#   color:
+#     R: 120
+#     G: 120
+#     B: 120
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# ego_vehicle:
+#   name: 'ego vehicle'
+#   index: 1
+#   color:
+#     R: 120
+#     G: 120
+#     B: 120
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# rectification_border:
+#   name: 'rectification border'
+#   index: 2
+#   color:
+#     R: 120
+#     G: 120
+#     B: 120
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# out_of_roi:
+#   name: 'out of roi'
+#   index: 3
+#   color:
+#     R: 120
+#     G: 120
+#     B: 120
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# static:
+#   name: 'static'
+#   index: 4
+#   color:
+#     R: 120
+#     G: 120
+#     B: 120
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# dynamic:
+#   name: 'dynamic'
+#   index: 5
+#   color:
+#     R: 120
+#     G: 120
+#     B: 120
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# ground:
+#   name: 'ground'
+#   index: 6
+#   color:
+#     R: 120
+#     G: 120
+#     B: 70
+#   friction:
+#     mean: 0.4
+#     variance: 0.15
+#   soft_contact: []
+road:
+  name: 'road'
+  index: 0
+  color:
+    R: 140
+    G: 140
+    B: 140
+  friction:
+    mean: 0.7
+    variance: 0.05
+  soft_contact: []
+sidewalk:
+  name: 'sidewalk'
+  index: 1
+  color:
+    R: 235
+    G: 255
+    B: 7
+  friction:
+    mean: 0.7
+    variance: 0.04
+  soft_contact: []
+# parking:
+#   name: 'parking'
+#   index: 9
+#   color:
+#     R: 120
+#     G: 120
+#     B: 120
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# rail_track:
+#   name: 'rail track'
+#   index: 10
+#   color:
+#     R: 120
+#     G: 120
+#     B: 120
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+building:
+  name: 'building'
+  index: 2
+  color:
+    R: 180
+    G: 120
+    B: 120
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+wall:
+  name: 'wall'
+  index: 3
+  color:
+    R: 120
+    G: 120
+    B: 120
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+fence:
+  name: 'fence'
+  index: 4
+  color:
+    R: 255
+    G: 184
+    B: 6
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+# guard_rail:
+#   name: 'guard rail'
+#   index: 14
+#   color:
+#     R: 255
+#     G: 61
+#     B: 6
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# bridge:
+#   name: 'bridge'
+#   index: 15
+#   color:
+#     R: 255
+#     G: 82
+#     B: 0
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# tunnel:
+#   name: 'tunnel'
+#   index: 16
+#   color:
+#     R: 120
+#     G: 120
+#     B: 120
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+pole:
+  name: 'pole'
+  index: 5
+  color:
+    R: 51
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+# polegroup:
+#   name: 'polegroup'
+#   index: 18
+#   color:
+#     R: 51
+#     G: 0
+#     B: 255
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+traffic_light:
+  name: 'traffic light'
+  index: 6
+  color:
+    R: 41
+    G: 0
+    B: 255
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+traffic_sign:
+  name: 'traffic sign'
+  index: 7
+  color:
+    R: 0
+    G: 102
+    B: 200
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+vegetation:
+  name: 'vegetation'
+  index: 8
+  color:
+    R: 204
+    G: 255
+    B: 4
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+terrain:
+  name: 'terrain'
+  index: 9
+  color:
+    R: 255
+    G: 6
+    B: 51
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+sky:
+  name: 'sky'
+  index: 10
+  color:
+    R: 6
+    G: 230
+    B: 230
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+person:
+  name: 'person'
+  index: 11
+  color:
+    R: 150
+    G: 5
+    B: 61
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+rider:
+  name: 'rider'
+  index: 12
+  color:
+    R: 150
+    G: 5
+    B: 61
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+car:
+  name: 'car'
+  index: 13
+  color:
+    R: 0
+    G: 102
+    B: 200
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+truck:
+  name: 'truck'
+  index: 14
+  color:
+    R: 255
+    G: 0
+    B: 20
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bus:
+  name: 'bus'
+  index: 15
+  color:
+    R: 255
+    G: 0
+    B: 245
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+# caravan:
+#   name: 'caravan'
+#   index: 29
+#   color:
+#     R: 163
+#     G: 255
+#     B: 0
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+# trailer:
+#   name: 'trailer'
+#   index: 30
+#   color:
+#     R: 8
+#     G: 255
+#     B: 214
+#   friction:
+#     mean: null
+#     variance: null
+#   soft_contact: []
+train:
+  name: 'train'
+  index: 16
+  color:
+    R: 7
+    G: 255
+    B: 224
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+motorcycle:
+  name: 'motorcycle'
+  index: 17
+  color:
+    R: 255
+    G: 184
+    B: 6
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []
+bicycle:
+  name: 'bicycle'
+  index: 18
+  color:
+    R: 255
+    G: 245
+    B: 0
+  friction:
+    mean: null
+    variance: null
+  soft_contact: []

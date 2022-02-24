@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="rviz_open" default="false"/>
+  <arg name="terrain_properties"  default="csail_semseg_properties.yaml"/>
+  <arg name="colorscale"  default="default.yaml"/>
+  <arg name="enable_mat_display"  default="true"/>  <!-- Current version of mesh_tools crashes with this on! -->
+  <arg name="save_location" default=""/>
+  <arg name="playback_rate" default="1"/>
+  <arg name="playback_decimation" default="3"/>
+  <arg name="sync_topic" default=""/>
+  <arg name="show_robot" default="false"/>
+  <arg name="robot_config" default="spot.yaml"/>
+
+  <arg name="required"            default="false"/>
+  <arg name="output"              default="screen"/>  <!-- [ screen | log ]-->
+  <arg name="respawn"             default="false"/>
+  <arg name="use_sim_time"  default="false"/>
+
+  <!-- Show in rviz -->
+  <node unless="$(arg rviz_open)" name="rviz" pkg="rviz" type="rviz" args="-d $(find sel_map)/rviz/mesh_view.rviz" output="$(arg output)"/>
+
+  <!-- set simtime param -->
+  <param name="use_sim_time" type="bool" value="$(arg use_sim_time)"/>
+
+  <group if="$(arg show_robot)">
+    <rosparam command="load" file="$(find sel_map)/config/robots/$(arg robot_config)" />
+    <include file="$(find spot_description)/launch/description.launch"/>
+  </group>
+
+  <!-- run sel_map in the namespace -->
+  <group ns="sel_map">
+    <node name="static_tf_linker" pkg="sel_map_utils" type="StaticTFLinker.py"
+          output="$(arg output)" required="$(arg required)" respawn="$(arg respawn)" />
+    <param name="terrain_properties" type="string" value="$(find sel_map)/config/terrain_properties/$(arg terrain_properties)"/>
+    <param name="colorscale" type="string" value="$(find sel_map)/config/colorscales/$(arg colorscale)"/>
+    <param name="enable_mat_display" type="bool" value="$(arg enable_mat_display)"/>
+    <node name="sel_map" pkg="sel_map" type="rviz_saved.py" output="$(arg output)" required="$(arg required)" respawn="$(arg respawn)"
+          args="'$(arg save_location)' $(arg playback_rate) $(arg playback_decimation) $(arg sync_topic)" cwd="node">
+      <!-- Output -->
+      <remap from="mesh" to="/mesh" />
+      <remap from="mesh/costs" to="/mesh/costs" />
+      <remap from="get_materials" to="/get_materials" />
+    </node>
+  </group>
+</launch>
