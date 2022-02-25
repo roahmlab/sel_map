@@ -1,7 +1,7 @@
-# sel_map (Semantic ELvation Map)
+# sel_map (Semantic ELevation Map)
 **Authors:** Parker Ewen (pewen@umich.edu), Adam Li (adamli@umich.edu), Yuxin Chen (chyuxin@umich.edu), Steven Hong (hongsn@umich.edu), and Ram Vasudevan (ramv@umich.edu). 
 
-- All authors affiliated with the Robotics Institute of the University of Michigan, 2505 Hayward Street, Ann Arbor, Michigan, USA.
+- All authors affiliated with the Robotics Institute and department of Mechanical Engineering of the University of Michigan, 2505 Hayward Street, Ann Arbor, Michigan, USA.
 - This work is supported by the Ford Motor Company via the Ford-UM Alliance under award N022977, by the Office of Naval Research under award number N00014-18-1-2575, and in part by the National Science Foundation under Grant 1751093.
 - `sel_map` was developed in [Robotics and Optimization for Analysis of Human Motion (ROAHM) Lab](http://www.roahmlab.com/) at University of Michigan - Ann Arbor.
 
@@ -24,15 +24,36 @@ The package is built on Ubuntu 20.04 with ROS Noetic Distribution, and the algor
 * [catkin_tools](https://catkin-tools.readthedocs.io/en/latest/index.html)
 * [Python3](https://www.python.org/download/releases/3.0/)
 * [cv-bridge](http://wiki.ros.org/cv_bridge)
-* [CUDA 11](https://developer.nvidia.com/cuda-downloads)
+* [CUDA 11](https://developer.nvidia.com/cuda-toolkit)
 * [PyTorch](https://pytorch.org)
+
+Make sure the ROS Noetic is installed before downloading the dependencies.
+```
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt install curl
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo apt update
+sudo apt install ros-noetic-desktop
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+source ~/.bashr
+```
 
 The following commands can be used to install the dependencies, and follow the [linked instruction](https://catkin-tools.readthedocs.io/en/latest/installing.html) to install `catkin_tools`.
 ```
-sudo apt install ros-noetic-mesh-msgs opencl-headers ros-noetic-hdf5-map-io python3-pip ros-noetic-cv-bridge
+sudo apt install ros-noetic-mesh-msgs opencl-headers ros-noetic-hdf5-map-io python3-pip ros-noetic-cv-bridge git ros-noetic-robot-state-publisher ros-noetic-xacro ros-noetic-rviz
 ```
 
-Make sure the system is setup with CUDA 11, and install [pytorch](https://pytorch.org) with CUDA 11. One example is shown below.
+Make sure the system is setup with CUDA 11 following the [CUDA download manuals](https://developer.nvidia.com/cuda-downloads). One example is shown below.
+```
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
+sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
+sudo apt-get update
+sudo apt-get -y install cuda
+```
+
+Install [pytorch](https://pytorch.org) with CUDA 11. One example is shown below.
 ```
 pip3 install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio==0.10.2+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
 ```
@@ -62,7 +83,7 @@ git clone git@github.com:clearpathrobotics/spot_ros.git
 (Note: This step is not required if you don't need Spot visualization or work on a different robot.)
 
 4. Add pretrained network models to semseg folder.
-For example, download the 2 files from [CSAIL link](http://sceneparsing.csail.mit.edu/model/pytorch/), and put them in the folder ~/catkin_ws/src/sel_map/sel_map_segmentation/mit_semseg_wrapper/ckpt/ade20k-resnet50dilated-ppm_deepsup.
+For example, download the 2 files from [CSAIL link](http://sceneparsing.csail.mit.edu/model/pytorch/ade20k-resnet50dilated-ppm_deepsup/), and put them in the folder ~/catkin_ws/src/sel_map/sel_map_segmentation/mit_semseg_wrapper/ckpt/ade20k-resnet50dilated-ppm_deepsup.
 
 5. Build the package using either `catkin_make` or `catkin build` in catkin_ws folder.
 ```
@@ -78,32 +99,38 @@ source devel/setup.bash
 ## Usage
 Before running the package, make sure you build the package successfully and source the workspace.
 
-In one terminal, launch the package:
+- Launch the package with Spot demo using the following code.
 ```
 roslaunch sel_map spot_sel.launch
 ```
 
-In another terminal, run the rosbag data:
+- In another terminal, run the rosbag, which provides recorded data to the package.
 ```
 rosbag play spot_comp8.data --clock --pause
 ```
 (Note: When doing rosbag playbacks, make sure to use `--clock`)
 
-In order to run different network model, specific the `semseg_config` argument. The available network models are located in [sel_map/sel_map/config/semseg](https://github.com/roahmlab/sel_map/tree/main/sel_map/config/semseg). One example is shown below.
+- To run different network model, specific the `semseg_config` argument. The available network models are located in [sel_map/sel_map/config/semseg](https://github.com/roahmlab/sel_map/tree/main/sel_map/config/semseg). One example is shown below.
 ```
-roslaunch sel_map spot_sel.launch semseg_config:=Encoding_FCN_ResNeSt50_PContext_full.yaml
+roslaunch sel_map spot_sel.launch semseg_config:=Encoding_ResNet50_PContext_full.yaml terrain_properties:=pascal_context.yaml
 ```
+(Note: terrain_properties argument should agree with the network models. PContext with pascal_context and ADE with csail_semseg_properties.)
 
-If you have `CUDA out of memory` error, you can either try a more powerful laptop, or just run the elevation mapping without sementic segmentation.
+- If you have `CUDA out of memory` error, you can either try a more powerful laptop, or just run the elevation mapping without sementic segmentation.
 ```
 roslaunch sel_map spot_sel.launch semseg_config:=Bypass.yaml
 ```
 
+- If want to show the terrain class map instead of terrain properties, specify the `colorscale` argument.
+```
+roslaunch sel_map spot_sel.launch colorscale:=use_properties.yaml
+```
+- The CSAIL network color scheme is shown [here](https://docs.google.com/spreadsheets/d/1se8YEtb2detS7OuPE86fXGyD269pMycAWe2mtKUj2W8/edit#gid=0).
+- The pcontext network color scheme is shown [here](https://docs.google.com/spreadsheets/d/1a-73_0Xi4L3U7m5KLqtBJww-4YzNyWlXWooiONRWW98/edit#gid=1446720304).
+
 ## License
 
-`sel_map` is released under a [MIT license](https://github.com/roahmlab/sel_map/blob/main/LICENSE). For a list of all code/library dependencies, please check dependency section.
-
-For a closed-source version of `sel_map` for commercial purpose, please contact the authors.
+`sel_map` is released under a [MIT license](https://github.com/roahmlab/sel_map/blob/main/LICENSE). For a list of all code/library dependencies, please check dependency section. For a closed-source version of `sel_map` for commercial purpose, please contact the authors.
 
 An overview of the theoretical and implementation details has been published in [to_be_added] If you use `sel_map` in an academic work, please cite using the following BibTex entry:
 
