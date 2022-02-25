@@ -20,9 +20,9 @@
 # images
 *.jpg
 *.jpeg
-*.png
 *.gif
 *.csv
+*.png
 
 # Pycache folders
 __pycache__/
@@ -36,3 +36,6 @@ __pycache__/
 
 # New
 .vscode/
+
+# Do not ignore figures in the figure folder
+!figures/*
