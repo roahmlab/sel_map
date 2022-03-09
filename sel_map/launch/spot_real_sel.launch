@@ -10,7 +10,7 @@
   <!-- Data Specific Properties -->
   <arg name="terrain_properties"  default="csail_semseg_properties.yaml"/>
   <arg name="colorscale"  default="default.yaml"/>
-  <arg name="robot_config" default="anymal.yaml"/>
+  <arg name="robot_config" default="spot_comp.yaml"/>
   <arg name="semseg_config"         default="CSAIL_ResNet50ppm_ADE_full.yaml"/>
   <arg name="camera_flipped"        default="false"/>
 
@@ -43,25 +43,10 @@
   <!-- set simtime param -->
   <param name="use_sim_time" type="bool" value="$(arg use_sim_time)"/>
 
-  <!-- Show anymal in rviz -->
+  <!-- Show spot in rviz -->
   <group if="$(arg open_rviz)">
-      <param name="robot_description" command="$(find xacro)/xacro $(find anymal_c)/urdf/anymal_c.urdf.xacro"/>
-
-      <!-- Joint state publisher -->
-      <!-- <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" output="screen">
-        <param name="use_gui"           value="true"/>
-        <param name="rate"              value="100"/>
-        <remap from="joint_states"      to="/state_estimator/joint_states"/>
-      </node> -->
-
-      <!-- Robot state publisher -->
-      <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
-        <param name="publish_frequency" value="100"/>
-        <param name="use_tf_static"     value="true"/>
-        <remap from="joint_states"      to="/state_estimator/joint_states"/>
-      </node> -->
-
-      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sel_map)/rviz/anymal.rviz" output="$(arg output)"/>
+      <include file="$(find spot_description)/launch/description.launch"/>
+      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sel_map)/rviz/spot.rviz" output="$(arg output)"/>
   </group>
 
   <!-- run sel_map in the namespace -->
@@ -69,12 +54,11 @@
     <rosparam command="load" file="$(find sel_map)/config/robots/$(arg robot_config)" />
     <rosparam command="load" file="$(find sel_map)/config/semseg/$(arg semseg_config)" />
 
-    <node pkg="rosservice" type="rosservice" name="enable_front_color" args='call --wait /depth_camera_front/toggleColor "data: true"' />
-    <node name="color_repub" pkg="image_transport" type="republish" args="theora in:=/depth_camera_front/color/image_raw raw out:=/depth_camera_front/color/image_decomp" />
-    <node name="depth_repub" pkg="image_transport" type="republish" args="compressedDepth in:=/depth_camera_front/aligned_depth_to_color/image_raw raw out:=/depth_camera_front/aligned_depth_to_color/image_decomp" />
+    <node name="color_repub" pkg="image_transport" type="republish" args="theora in:=/camera/color/image_raw raw out:=/camera/color/image_decomp" />
+    <node name="depth_repub" pkg="image_transport" type="republish" args="compressedDepth in:=/camera/aligned_depth_to_color/image_raw raw out:=/camera/aligned_depth_to_color/image_decomp" />
 
-    <!-- <node name="static_tf_linker" pkg="sel_map_utils" type="StaticTFLinker.py"
-          output="$(arg output)" required="$(arg required)" respawn="$(arg respawn)" /> -->
+    <node name="static_tf_linker" pkg="sel_map_utils" type="StaticTFLinker.py"
+          output="$(arg output)" required="$(arg required)" respawn="$(arg respawn)" />
 
     <param name="sync_slop" type="double" value="$(arg sync_slop)"/>
     <param name="queue_size" type="int" value="$(arg queue_size)"/>

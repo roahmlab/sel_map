@@ -1,0 +1,71 @@
+
+# Specify what the robot base is and what the world base is
+world_base: odom
+robot_base: body
+
+# TODO
+num_cameras: 1
+update_policy: fifo
+# Configurable section
+cameras_registered:
+  realsense:
+    image_rectified: /camera/color/image_decomp
+    depth_registered: /camera/aligned_depth_to_color/image_decomp
+    camera_info: /camera/aligned_depth_to_color/camera_info
+    # By not specifying these, we lookup the transform frame instead. (They do no need to be specified)
+    pose_with_covariance: ''
+    pose: ''
+# TODO: make the below work
+#cameras_raw:
+
+# Define intermediate joints needed, but id them with
+# child link to keep uniqueness.
+joints:
+  # # Angle for hallway test
+  # camera_link:
+  #   parent: front_rail
+  #   translation:
+  #     x: 0.225
+  #     y: 0.04
+  #     z: 0.01
+  #   rotation:
+  #     x: 0
+  #     y: 0.2292004
+  #     z: 0
+  #     w: 0.9733793
+  # # Angle for the snow test
+  # camera_link:
+  #   parent: front_rail
+  #   translation:
+  #     x: 0.225
+  #     y: 0.04
+  #     z: 0.01
+  #   rotation:
+  #     x: 0
+  #     y: 0.3007058
+  #     z: 0
+  #     w: 0.953717
+  # Angle for the new main fig (19.5)
+  # camera_link:
+  #   parent: front_rail
+  #   translation:
+  #     x: 0.225
+  #     y: 0.0175
+  #     z: 0.037
+  #   rotation:
+  #     x: 0
+  #     y: 0.1521234
+  #     z: 0
+  #     w: 0.9883615
+  # Angle for the new bracket
+  camera_link:
+    parent: front_rail
+    translation:
+      x: 0.264764
+      y: 0.0175
+      z: 0.036
+    rotation:
+      x: 0
+      y: 0.258819
+      z: 0
+      w: 0.9659258
