@@ -1,6 +1,5 @@
 # Simple utility to spin up multiple static TF's from a the parameter server
 
-from math import degrees
 import rospy
 import sys
 import yaml

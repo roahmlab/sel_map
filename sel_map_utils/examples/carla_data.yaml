@@ -1,0 +1,30 @@
+# Example config file for Carla data
+
+publish_rate: 2
+world_frame_id: odom
+base_frame_id: body
+
+# Creates the image_raw and camera_info topics with the provided data
+color_camera:
+  frame_id: camera_frame
+  intrinsic: [400.00053072, 0.0, 400.0, 0.0, 400.00053072, 300.0, 0.0, 0.0, 1.0]
+  topic: /camera/color/
+depth_camera:
+  frame_id: camera_frame
+  intrinsic: [400.00053072, 0.0, 400.0, 0.0, 400.00053072, 300.0, 0.0, 0.0, 1.0]
+  topic: /camera/depth/
+
+# Adds these to the TF topics as static frames.
+joints:
+  camera_frame:
+    parent: body
+    translation:
+        x: 2.0
+        y: 0.0
+        z: 0.0
+    rotation:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        w: 1.0
+

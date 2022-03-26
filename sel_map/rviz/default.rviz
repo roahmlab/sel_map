@@ -1,0 +1,175 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 78
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Mesh1
+        - /Mesh1/Display Type1
+        - /Camera1
+      Splitter Ratio: 0.5
+    Tree Height: 564
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded: ~
+    Name: Tool Properties
+    Splitter Ratio: 0.5886790156364441
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+      - /Current View1/Focal Point1
+    Name: Views
+    Splitter Ratio: 0.5
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: false
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: false
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        body:
+          Value: true
+        camera_frame:
+          Value: true
+        odom:
+          Value: true
+        sel_map:
+          Value: true
+      Marker Alpha: 1
+      Marker Scale: 0.5
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        odom:
+          body:
+            camera_frame:
+              {}
+          sel_map:
+            {}
+      Update Interval: 0
+      Value: true
+    - Buffer Size: 1
+      Class: rviz_map_plugin/Mesh
+      Display Type:
+        Color Scale: Red Green
+        Faces Alpha: 1
+        Faces Color: 0; 255; 0
+        Material Service Name: get_materials
+        Show textured faces only: false
+        Texture Service Name: get_texture
+        Use Custom limits:
+          Value: false
+          Vertex Costs Lower Limit: 0
+          Vertex Costs Upper Limit: 1
+        Value: Textures
+        Vertex Color Service Name: get_vertex_colors
+        Vertex Colors Topic: ""
+        Vertex Costs Topic: /mesh/costs
+        Vertex Costs Type: height
+      Enabled: true
+      Geometry Topic: /mesh
+      Name: Mesh
+      Show Normals:
+        Normals Alpha: 1
+        Normals Color: 255; 0; 255
+        Normals Scaling Factor: 0.10000000149011612
+        Value: false
+      Show Wireframe:
+        Value: true
+        Wireframe Alpha: 1
+        Wireframe Color: 0; 0; 0
+      Value: true
+    - Class: rviz/Camera
+      Enabled: true
+      Image Rendering: background and overlay
+      Image Topic: ""
+      Name: Camera
+      Overlay Alpha: 0.5
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+      Visibility:
+        Grid: false
+        Mesh: true
+        TF: false
+        Value: true
+      Zoom Factor: 1
+  Enabled: true
+  Global Options:
+    Background Color: 255; 255; 255
+    Default Light: true
+    Fixed Frame: sel_map
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/MoveCamera
+  Value: true
+  Views:
+    Current:
+      Class: rviz/ThirdPersonFollower
+      Distance: 5.118714809417725
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Field of View: 0.7853981852531433
+      Focal Point:
+        X: -0.2829299867153168
+        Y: -0.004588400013744831
+        Z: 2.2999999771400326e-07
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.4753979742527008
+      Target Frame: body
+      Yaw: 3.1904006004333496
+    Saved: ~
+Window Geometry:
+  Camera:
+    collapsed: false
+  Displays:
+    collapsed: false
+  Height: 1015
+  Hide Left Dock: false
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000039afc0200000006fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006300fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003e000002c6000000da00fffffffb0000000c00430061006d006500720061010000030a000000ce0000001800ffffff000000010000010f0000039afc0200000004fb0000000a00560069006500770073010000003e0000039a000000b100fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a0056006900650077007301000000280000023c0000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a00000000000000000fb0000000800540069006d00650100000000000004500000000000000000000004fb0000039a00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 1920
+  X: 0
+  Y: 0
