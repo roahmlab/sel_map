@@ -182,12 +182,12 @@
         <div class="row" style="margin-left:auto; margin-right:auto; margin-top:10pt;max-width:300px;">
             <div class="col" style="width: 50%; line-height: 50pt;">
                 <a href="https://github.com/roahmlab/sel_map">
-                    <img src="/web_elements/paper.png" style="max-width: 80%;"/>
+                    <img src="./web_elements/paper.png" style="max-width: 80%;"/>
                 </a>
             </div>
             <div class="col" style="width: 50%; line-height: 50pt;">
                 <a href="https://github.com/roahmlab/sel_map">
-                    <img src="/web_elements/github.png" style="opacity:.77"/>
+                    <img src="./web_elements/github.png" style="opacity:.77"/>
                 </a>
             </div>
         </div>
@@ -221,7 +221,7 @@
             Additionally, the proposed method is deployed on a physical legged robotic platform in both indoor and outdoor environments, and we show our method correctly predicts terrain properties in both cases. 
             The proposed framework runs in real-time and includes a ROS interface for easy integration.</p>
         <div style="text-align: center;">
-            <img src="/figures/main.png", width="700pt">
+            <img src="./figures/main.png", width="700pt">
         </div>
         <p class="body">The image above illustrates the real-time semantic mapping method proposed in this paper which recursively estimates terrain height and friction properties from RGB-D images. 
             This is done by constructing a triangular mesh to estimate the contact surface of the robot's surroundings (drawn within the grey oval sensor footprint), and the mean and variance of each vertex within the mesh is computed using a one-dimensional Kalman filter at each iteration. 
@@ -238,7 +238,7 @@
             Using the camera’s estimated pose and associated depth image, the pixel-wise probabilistic terrain class estimates are projected into the map. 
             The height map is updated using a 1D Kalman filter and the terrain class estimates, alongside our novel material property dataset, are used to recursively estimate terrain properties for each region of the map.</p>
         <div style="text-align: center;">
-            <img src="/figures/flow_diagram.png", width="900pt">
+            <img src="./figures/flow_diagram.png", width="900pt">
         </div>
     </div>
 
@@ -249,7 +249,7 @@
             Experiments were conducted both indoors and outdoors with a variety of terrain classes. 
             We compared our method to a state-of-the-art traversability mapping framework to demonstrate the utility of our semantic mapping algorithm when compared to a traversability estimation algorithm.</p>
         <div style="text-align: center;">
-            <img src="/web_elements/comparison_full.PNG", width="900pt">
+            <img src="./web_elements/comparison_full.PNG", width="900pt">
         </div>
         <p class="body">Each column depicts the performance of our proposed mapping algorithm (second row, the first column uses the Context-Encoding ResNet-50 trained on the Pascal dataset while the remaining columns use the RenNet-50 trained on ADE20K for terrain classification) when compared to a traversability estimation algorithm (third row) applied on the scenes depicted in the top row. 
             Traversability estimation sometimes believes that a region is traversable when it is not, such as an icy surface (column a) or a puddle (column e) . 
