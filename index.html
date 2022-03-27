@@ -6,10 +6,85 @@
 	<title>SEL Map: Semantic ELevation Map</title>
 	<meta name="description" content="A semantic Bayesian inferencing framework for real-time elevation mapping and terrain property estimation.">
     <style>
-        h1 {text-align: center;}
+        .title{
+            text-align:center;
+            margin-top:30pt;
+            margin-bottom:0pt;
+            color:#303030;
+            font-size:40pt;
+            font-weight:900;
+            letter-spacing:0pt;
+        }
+        .subtitle{
+            text-align:center;
+            margin-top:8pt;
+            margin-bottom:0;
+            margin-left: auto;
+            margin-right: auto;
+            max-width:700px;
+            color:#303030;
+            font-size:20pt;
+            font-weight:400;
+            letter-spacing:0pt;
+        }
+        .section_title{
+            text-align:left;
+            padding-left:25pt;
+            padding-right:25pt;
+            padding-top:25pt;
+            color:#777777;
+            font-size:25pt;
+            font-weight:300;
+            letter-spacing:0pt;
+        }
+        .body{
+            color:#000000;
+            padding-right:25pt;
+            padding-left:25pt;
+            padding-bottom:25pt;
+            text-align:justify;
+            font-size:12pt;
+            font-weight:300;
+            letter-spacing:0pt;
+            line-height: 20pt;
+        }
+        .col{
+            text-align: center;
+            float: left;
+            width: 20%;
+            color:#000000;
+            font-size:15pt;
+            font-weight:100;
+            letter-spacing:0pt;
+            height: 25pt;
+        }   
+        .row{
+            margin-left: auto;
+            margin-right: auto;
+            max-width:940px;
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .affiliation{
+            text-align: center;
+            color:#000000;
+            font-size:10pt;
+            font-weight:100;
+            letter-spacing:0pt;
+        }
+        .container{
+            margin-left:auto;
+            margin-right:auto;
+            margin-top: 5pt;
+            max-width:940px
+        }
     </style>
 </head>
-<body>
+<body style="background-color:#ffffff;">
+    <!-- Github Logo on the top-right corner -->
     <div class="github_logo">
         <a href="https://github.com/roahmlab/sel_map" class="github-corner" aria-label="View source on Github">
             <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#333333; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
@@ -53,9 +128,139 @@
         }
         </style>
     </div>
+    <!-- Author list -->
     <div class="section">
-        <h1 class="sel_map_title">Semantic ELevation (SEL) Map</h1>
-        <h1 class="sel_map_subheader">Semantic Bayesian inferencing framework for real-time elevation mapping and terrain property estimation</h1>
+        <h1 class="title">Semantic ELevation (SEL) Map</h1>
+        <h1 class="subtitle">Semantic Bayesian inferencing framework for real-time elevation mapping and terrain property estimation</h1>
+        <!-- Author name-->
+        <div class="row">
+            <div class="col" style="font-weight: 200;">
+                <p>Parker Ewen</p>
+            </div>
+            <div class="col" style="font-weight: 200;">
+                <p>Adam Li</p>
+            </div>
+            <div class="col" style="font-weight: 200;">
+                <p>Yuxin Chen</p>
+            </div>
+            <div class="col" style="font-weight: 200;">
+                <p>Steven Hong</p>
+            </div>
+            <div class="col" style="font-weight: 200;">
+                <p>Ram Vasudevan</p>
+            </div>
+        </div>    
+        <!-- Mailbox -->
+        <div class="row">
+            <div class="col", style="font-size:10pt;">
+                <p>pewen@umich.edu</p>
+            </div>
+            <div class="col", style="font-size:10pt;">
+                <p>adamli@umich.edu</p>
+            </div>
+            <div class="col", style="font-size:10pt;">
+                <p>chyuxin@umich.edu</p>
+            </div>
+            <div class="col", style="font-size:10pt;">
+                <p>hongsn@umich.edu</p>
+            </div>
+            <div class="col", style="font-size:10pt;">
+                <p>ramv@umich.edu</p>
+            </div>
+        </div> 
+        <!-- Authors affiliation -->
+        <div class="affiliation">
+            <p>All authors affiliated with the Robotics Institute and department of Mechanical Engineering of the University of Michigan, Ann Arbor.</p>
+        </div>
+        <!-- Links -->
+        <div class="row" style="margin-left:auto; margin-right:auto; margin-top:10pt;max-width:300px;">
+            <div class="col" style="width: 50%; line-height: 50pt;">
+                <a href="https://github.com/roahmlab/sel_map">
+                    <img src="./web_elements/paper.png" style="max-width: 80%;"/>
+                </a>
+            </div>
+            <div class="col" style="width: 50%; line-height: 50pt;">
+                <a href="https://github.com/roahmlab/sel_map">
+                    <img src="./web_elements/github.png" style="opacity:.77"/>
+                </a>
+            </div>
+        </div>
+        <!-- Link name -->
+        <div class="row" style="margin-left:auto; margin-right:auto; max-width:300px; line-height: 10pt;">
+            <div class="col" style="width: 50%; font-size:10pt; font-weight: 500;">
+                <p>Paper</p>
+            </div>
+            <div class="col" style="width: 50%; font-size:10pt; font-weight: 500;">
+                <p>&lt;/Code&gt;</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overview Video -->
+    <div class="container" style="padding-top: 0pt;">
+        <h2 class="section_title">Overview Video</h2>
+        <video width="100%" controls>
+            <source src="./web_elements/Demo.mp4">
+        </video>
+    </div>
+
+    <!-- Introduction -->
+    <div class="container" style="background-color:#f2f2f2">
+        <h2 class="section_title">Introduction</h2>
+        <p class="body">The equations of motion governing mobile robots are dependent on terrain properties such as the coefficient of friction, and contact model parameters. 
+            Estimating these properties is thus essential for robotic navigation. 
+            Ideally any map estimating terrain properties should run in real time, mitigate sensor noise, and provide probability distributions of the aforementioned properties, thus enabling risk-mitigating navigation and planning. 
+            This paper addresses these needs and proposes a Bayesian inference framework for semantic mapping which recursively estimates both the terrain surface profile and a probability distribution for terrain properties using data from a single RGB-D camera. 
+            The proposed framework is evaluated in simulation against other semantic mapping methods and is shown to outperform these state-of-the-art methods in terms of correctly estimating simulated ground-truth terrain properties when evaluated using a precision-recall curve and the Kullback-Leibler divergence test. 
+            Additionally, the proposed method is deployed on a physical legged robotic platform in both indoor and outdoor environments, and we show our method correctly predicts terrain properties in both cases. 
+            The proposed framework runs in real-time and includes a ROS interface for easy integration.</p>
+        <div style="text-align: center;">
+            <img src="./figures/main.png", width="700pt">
+        </div>
+        <p class="body">The image above illustrates the real-time semantic mapping method proposed in this paper which recursively estimates terrain height and friction properties from RGB-D images. 
+            This is done by constructing a triangular mesh to estimate the contact surface of the robot's surroundings (drawn within the grey oval sensor footprint), and the mean and variance of each vertex within the mesh is computed using a one-dimensional Kalman filter at each iteration. 
+            Terrain classes are estimated by combining off-the-shelf semantic segmentation networks with a novel algorithm we develop to recursively estimate terrain properties using Bayesian inference. 
+            These property estimates are full probability distributions (shown in the red inlay for one region) and are computed for each cell within the mesh (the mean estimated friction coefficient is colored according to the given legend).
+            This algorithm operates at between 5-25Hz and runs on several robot systems including Boston Dynamics's Spot and Agility Robotics's Digit.</p>
+    </div>
+
+    <!-- Method -->
+    <div class="container">
+        <h2 class="section_title">Method</h2>
+        <p class="body">Here is a flow diagram illustrating out method.
+            GB-D images are semantically segmented using an off-the-shelf semantic segmentation network. 
+            Using the camera’s estimated pose and associated depth image, the pixel-wise probabilistic terrain class estimates are projected into the map. 
+            The height map is updated using a 1D Kalman filter and the terrain class estimates, alongside our novel material property dataset, are used to recursively estimate terrain properties for each region of the map.</p>
+        <div style="text-align: center;">
+            <img src="./figures/flow_diagram.png", width="900pt">
+        </div>
+    </div>
+
+    <!-- Results -->
+    <div class="container">
+        <h2 class="section_title">Results</h2>
+        <p class="body">We ran our method on the Spot quadruped using an on-board Realsense D435 RGB-D camera. 
+            Experiments were conducted both indoors and outdoors with a variety of terrain classes. 
+            We compared our method to a state-of-the-art traversability mapping framework to demonstrate the utility of our semantic mapping algorithm when compared to a traversability estimation algorithm.</p>
+        <div style="text-align: center;">
+            <img src="./web_elements/comparison_full.PNG", width="900pt">
+        </div>
+        <p class="body">Each column depicts the performance of our proposed mapping algorithm (second row, the first column uses the Context-Encoding ResNet-50 trained on the Pascal dataset while the remaining columns use the RenNet-50 trained on ADE20K for terrain classification) when compared to a traversability estimation algorithm (third row) applied on the scenes depicted in the top row. 
+            Traversability estimation sometimes believes that a region is traversable when it is not, such as an icy surface (column a) or a puddle (column e) . 
+            In other scenarios, it believes that an area is intraversable when it is traversable such as on hills (column b, d) and near low vegetation (column c). 
+            Our method makes no claims about traversability, instead it estimates the probability distribution of terrain properties for each mesh element along with the terrain geometry.</p>
+    </div>
+
+    <!-- Citation -->
+    <div class="container" style="background-color:#f2f2f2">
+        <h2 class="section_title">Citation</h2>
+        <ul class="body" style="padding-left:50pt; font-size: 10pt; line-height: 15pt;">
+            <li>This work is supported by the Ford Motor Company via the Ford-UM Alliance under award N022977, by the Office of Naval Research under award number N00014-18-1-2575, and in part by the National Science Foundation under Grant 1751093.</li>
+            <li>sel_map was developed in <a href="http://www.roahmlab.com">Robotics and Optimization for Analysis of Human Motion (ROAHM) Lab</a> at University of Michigan - Ann Arbor.</li>
+            <li><div style="background-color:#e6e6e6;">
+                <p class="body" style="padding-left:0pt; font-size: 10pt;">@article{to_be_added, title={to_be_added} }</p>
+            </div></li>
+        </ul>
     </div>
 </body>
 </html>
