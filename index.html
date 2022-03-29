@@ -221,7 +221,7 @@
             Additionally, the proposed method is deployed on a physical legged robotic platform in both indoor and outdoor environments, and we show our method correctly predicts terrain properties in both cases. 
             The proposed framework runs in real-time and includes a ROS interface for easy integration.</p>
         <div style="text-align: center;">
-            <img src="./figures/main.png", width="700pt">
+            <img src="./web_elements/main.png", width="700pt">
         </div>
         <p class="body">The image above illustrates the real-time semantic mapping method proposed in this paper which recursively estimates terrain height and friction properties from RGB-D images. 
             This is done by constructing a triangular mesh to estimate the contact surface of the robot's surroundings (drawn within the grey oval sensor footprint), and the mean and variance of each vertex within the mesh is computed using a one-dimensional Kalman filter at each iteration. 
@@ -238,7 +238,7 @@
             Using the camera’s estimated pose and associated depth image, the pixel-wise probabilistic terrain class estimates are projected into the map. 
             The height map is updated using a 1D Kalman filter and the terrain class estimates, alongside our novel material property dataset, are used to recursively estimate terrain properties for each region of the map.</p>
         <div style="text-align: center;">
-            <img src="./figures/flow_diagram.png", width="900pt">
+            <img src="./web_elements/flow_diagram.png", width="900pt">
         </div>
     </div>
 
