@@ -163,12 +163,13 @@ class Pose():
 
 class CarlaDataLoader():
 	def __init__(self, directory, pointheightlimit=3.0, lidarheight=1.7,
-				 semantic=False, lidar=True, pose=True, groundtruth=False):
+				 semantic=False, lidar=True, pose=True, groundtruth=False, logdepth=False):
 
 		self.pose = pose
 		self.lidar = lidar
 		self.semantic = semantic
 		self.groundtruth = groundtruth
+		self.logdepth = logdepth
 
 		if self.pose:
 			self.posedir = os.path.join(directory, 'carla-pose')
@@ -337,6 +338,36 @@ class CarlaDataLoader():
 		except:
 			return None
 
+	def getLogDepthImage(self, filename):
+		try:
+			# Load the image and isolate just a single layer for a carla logDepth Image
+			img = Image.open(filename)
+			img = np.asarray(img).astype(np.float32)
+
+			# convert to float and undo log conversion
+			normalized_depth = np.exp((img / 255.0 - 1) * 1.45)*10*1.45
+			# The 1.45 and 10 are magic numbers that I can't figure out the source of, and it's possibly not carla...
+			# This is otherwise derived from the colorConverter class of the Carla sim
+			# of which a more readable python equivalent version can be found here:
+			# https://github.com/carla-simulator/driving-benchmarks/blob/master/version084/carla/image_converter.py
+			# normalized_depth = np.exp((img / 255.0 - 1) * np.log(300))
+
+
+			# remove clipped bounds
+			normalized_depth[img >= 255] = np.Inf
+			normalized_depth[img <= 4] = -np.Inf
+			
+			# normalized_depth = np.dot(img, [65536.0, 256.0, 1.0])
+			# normalized_depth /= 16777215.0  # (256.0 * 256.0 * 256.0 - 1.0)
+
+			return normalized_depth
+			# img = Image.open(filename).convert('I')
+			# img = np.asarray(img)
+			# return img
+
+		except:
+			return None
+
 	def getGroundTruthImage(self, filename):
 		try:
 			img = Image.open(filename).convert('RGB')
@@ -405,7 +436,10 @@ class CarlaDataLoader():
 					rgbimage = None
 
 				if depthfile:
-					depthimage = self.getDepthImage(depthfile[0])
+					if self.logdepth:
+						depthimage = self.getLogDepthImage(depthfile[0])
+					else:
+						depthimage = self.getDepthImage(depthfile[0])
 				else:
 					depthimage = None
 

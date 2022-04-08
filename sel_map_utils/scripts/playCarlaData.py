@@ -78,7 +78,7 @@ except:
     exit()
 
 # Load the data
-dataloader = CarlaDataLoader(datapath, lidar=False, groundtruth=False)
+dataloader = CarlaDataLoader(datapath, lidar=False, groundtruth=False, logdepth=True)
 
 # Load the configuration
 with open(os.path.join(datapath, 'config.yaml')) as file:
@@ -135,12 +135,13 @@ while pose is not None and rgb is not None and depth is not None:
     rospy.sleep((1.0/rate)/4)
 
     # Publish the RGB image
-    depth = depth.astype(np.float32)*10
+    depth = depth.astype(np.float32)
+    # depth = depth.astype(np.float32)*1000
     # small fix to make the data look better
     sigma = 0.002**0.5
     depth = depth + np.random.normal(0,sigma,depth.shape).reshape(depth.shape).astype(np.float32)
-    depth[depth>=9] = np.Inf
-    depth[depth<5] = -np.Inf
+    # depth[depth>=9] = np.Inf
+    # depth[depth<1] = -np.Inf
     color_camera.publish(stamp, rgb, encoding='rgb8')
     depth_camera.publish(stamp, depth, encoding='32FC1')
 
