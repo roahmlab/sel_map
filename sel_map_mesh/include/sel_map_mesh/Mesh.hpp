@@ -11,7 +11,6 @@
 #include <list>
 #include <vector>
 #include <utility>
-#include "core/ElemArray.hpp"
 #include <Eigen/Dense>
 #include <nanoflann/nanoflann.hpp>
 
@@ -23,7 +22,7 @@ namespace sel_map::mesh{
     template <typename TElement_t>
     class Mesh{
         // Found using the compiler
-        typedef Eigen::Block<Eigen::Map<PointWithCovArray_t, Eigen::Aligned16>, Eigen::Dynamic, 2> points_to_2d_eigen_t;
+        typedef Eigen::Block<PointWithCovArray_t, Eigen::Dynamic, 2> points_to_2d_eigen_t;
         typedef nanoflann::KDTreeEigenMatrixAdaptor<points_to_2d_eigen_t, 2, nanoflann::metric_L2_Simple> kd_tree_t;
         public:
         // Since this is really only accessed for values, and not for maths, don't eigen it.
@@ -45,7 +44,7 @@ namespace sel_map::mesh{
         unsigned int verticesLength[2];
 
         // The points that exist within the mesh, each defined as (x, y, z)
-        sel_map::core::ElemArray<double, 4> points;
+        PointWithCovArray_t points;
 
         // Binning of elementIdx for each point, based on the inner space of each square grid space.
         // Eigen::VectorXi pointsBin;

@@ -1,5 +1,6 @@
+#pragma once
 /**
- * @file EigenMathUtil.hpp
+ * @file MathUtils.hpp
  * @author Adam Li (adamli@umich.edu)
  * @date 2021-11-12
  * 
@@ -9,7 +10,7 @@
 
 #include <Eigen/Core>
 
-namespace sel_map::core::EigenMathUtil {
+namespace sel_map::mesh::MathUtils {
     
     template <typename Derived1, typename Derived2>
     inline double crossProduct2D(const Eigen::EigenBase<Derived1>& x, const Eigen::EigenBase<Derived2>& y){

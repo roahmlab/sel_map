@@ -9,7 +9,6 @@
 #include "Defs.hpp"
 #include <random>
 #include <array>
-#include "core/ElemArray.hpp"
 #include "Element.hpp"
 // #include "TriangularMesh.hpp"
 

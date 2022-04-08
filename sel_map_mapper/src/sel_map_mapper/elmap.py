@@ -161,8 +161,11 @@ class Map:
             with open(property_file) as file:
                 prop_dict = yaml.load(file, Loader=yaml.FullLoader)
                 keys_list = list(prop_dict)
-            colorscale_filename = rospy.get_param("colorscale", os.path.join(path, "config/colorscales/default.yaml"))
-            colorscale = ColorScale(colorscale_filename=colorscale_filename)
+            colorscale_args = rospy.get_param("colorscale", None)
+            if colorscale_args is None:
+                with open(os.path.join(path, "config/colorscales/default.yaml")) as file:
+                    colorscale_args = yaml.load(file, Loader=yaml.FullLoader)['colorscale']
+            colorscale = ColorScale(args=colorscale_args)
             if colorscale.bypass:
                 # we're not using the colorscale here, so use properties instead
                 materials = [ColorRGBA(float(prop_dict[key]['color']['R'])/255.0,
@@ -217,7 +220,7 @@ class Map:
                 timer.sleep()
             roscpp_shutdown()
         except Exception as e:
-            print(e)
+            rospy.logerr(e)
             self.crash = True
     
     def materialCallback(self, req):
@@ -332,6 +335,7 @@ class Map:
         # frame = deepcopy(self.frame)
         with self.lock:
             if self.save:
+                rospy.loginfo("[sel_map] Saving...")
                 import time
                 tic = time.perf_counter()
                 # save the geometry
@@ -356,6 +360,7 @@ class Map:
                 print("save time", toc-tic)
 
             if self.publish:
+                rospy.loginfo("[sel_map] Publishing...")
                 if self.enableMat:
                     # First prepare the new colors
                     # simplex_colors = np.argmax(self.classes, axis=1)

@@ -13,11 +13,8 @@
 #include <Eigen/Dense>
 #include "TriangularMesh.hpp"
 
-using sel_map::core::ElemArray;
-using sel_map::core::ElemArrayBase;
-
-#include "core/EigenMathUtil.hpp"
-namespace EigenMathUtil = sel_map::core::EigenMathUtil;
+// #include "MathUtils.hpp"
+// namespace MathUtils = sel_map::mesh::MathUtils;
 
 //Avoid rewriting the whole thing everytime
 using sel_map::mesh::TriangularMesh;
@@ -72,9 +69,9 @@ void TriangleElement::reset()
 //     // gamma = abs(np.cross(p1-self.points[:,0:2], p2-self.points[:,0:2]) / area)
 //     // self.lambdas = np.array([alpha, beta, gamma])
     
-//     double v1_x_v2 = EigenMathUtil::crossProduct2D(v1, v2);
-//     double v1_x_v3 = EigenMathUtil::crossProduct2D(v1, v3);
-//     double v2_x_v3 = EigenMathUtil::crossProduct2D(v2, v3);
+//     double v1_x_v2 = MathUtils::crossProduct2D(v1, v2);
+//     double v1_x_v3 = MathUtils::crossProduct2D(v1, v3);
+//     double v2_x_v3 = MathUtils::crossProduct2D(v2, v3);
 
 //     // update alpha
 //     eigenLambdaArray.col(0) = ((v2_x_v3

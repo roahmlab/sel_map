@@ -122,7 +122,7 @@ class TriangularMeshPublisher():
         # unsigned int terrainClasses
         self.obj = f_obj(self.mesh_obj, uuid.encode('utf-8'), frame_id.encode('utf-8'), mesh_topic.encode('utf-8'))
 
-        self.uuid = uuid
+        self.uuid = self.obj
         self.frame_id = frame_id
         self.mesh_topic = mesh_topic
 
@@ -141,7 +141,6 @@ class TriangularMeshPublisher():
         
     def publish(self, vertices=None, faces=None, passthrough=False):
         # If any of the vertices, normals, or faces are None, direct publish
-        print("publishing")
         if vertices is None or faces is None:
             f_publish = lib._sel_map_TriangularMeshPublisher_publishMeshDirect
             f_publish.argtypes = [ctypes.c_void_p]

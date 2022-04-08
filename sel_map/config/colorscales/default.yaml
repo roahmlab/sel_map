@@ -1,28 +1,29 @@
-type: linear_ends
-stops: [0.2, 0.8]
-values:
-  - 252,197,192
-  - 250,159,181
-  - 247,104,161
-  - 221,52,151
-  - 174,1,126
-  - 122,1,119
-  - 73,0,106
-unknown: 120,120,120
-# optionally, also specify the absolute ends
-ends:
-  zero: 255,255,255
-  one: 0,0,0
+colorscale:
+  type: linear_ends
+  stops: [0.2, 0.8]
+  values:
+    - 252,197,192
+    - 250,159,181
+    - 247,104,161
+    - 221,52,151
+    - 174,1,126
+    - 122,1,119
+    - 73,0,106
+  unknown: 120,120,120
+  # optionally, also specify the absolute ends
+  ends:
+    zero: 255,255,255
+    one: 0,0,0
 
-# this can also be defined as follows
-#type: custom
-#stops: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
-#  - 252,197,192
-#  - 250,159,181
-#  - 247,104,161
-#  - 221,52,151
-#  - 174,1,126
-#  - 122,1,119
-#  - 73,0,106
-#unknown: 120,120,120
+  # this can also be defined as follows
+  #type: custom
+  #stops: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+  #  - 252,197,192
+  #  - 250,159,181
+  #  - 247,104,161
+  #  - 221,52,151
+  #  - 174,1,126
+  #  - 122,1,119
+  #  - 73,0,106
+  #unknown: 120,120,120
 

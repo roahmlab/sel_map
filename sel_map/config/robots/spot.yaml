@@ -9,8 +9,8 @@ update_policy: fifo
 # Configurable section
 cameras_registered:
   realsense:
-    image_rectified: /camera/color/image_raw
-    depth_registered: /camera/aligned_depth_to_color/image_raw
+    image_rectified: /camera/color/image_decomp
+    depth_registered: /camera/aligned_depth_to_color/image_decomp
     camera_info: /camera/aligned_depth_to_color/camera_info
     # By not specifying these, we lookup the transform frame instead. (They do no need to be specified)
     pose_with_covariance: ''

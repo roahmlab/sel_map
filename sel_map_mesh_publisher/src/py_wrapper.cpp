@@ -158,7 +158,9 @@ void _sel_map_roscpp_init_shutdown(bool init, char* node_name, _sel_map_sys_argv
     static ros::NodeHandle* keepAlive = nullptr;
 
     if (init){
-        ros::init(argv->argc, argv->argv, std::string(node_name));
+        // Start the rosnode without overriding the SIGINT handler (so rospy still works as intended)
+        // and give this an anonymous name in case we have node name collisions (unlikely to happen)
+        ros::init(argv->argc, argv->argv, std::string(node_name), ros::init_options::NoSigintHandler | ros::init_options::AnonymousName);
         keepAlive = new ros::NodeHandle();
     }
     else {

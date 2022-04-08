@@ -1,0 +1,2 @@
+from .SemsegNetworkWrapper import SemsegNetworkWrapper
+

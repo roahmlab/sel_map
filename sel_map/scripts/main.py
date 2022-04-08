@@ -34,7 +34,7 @@ def syncedCallback(rgb, depth, info, pose=None, meta=None):
     if pose is None:
         try:
             tf_stamped = tfBuffer.lookup_transform(world_base, depth.header.frame_id, depth.header.stamp, rospy.Duration(0.01))
-        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
             return
         location = tf_stamped.transform.translation
         location = np.array([location.x, location.y, location.z])
@@ -50,7 +50,7 @@ def syncedCallback(rgb, depth, info, pose=None, meta=None):
         rot = quaternion_matrix([pose.pose.orientation.x, pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w])
         rot = rot[:3,:3]
         location = np.array([pose.pose.position.x, pose.pose.position.y, pose.pose.position.z])
-    print("Message received!")
+    rospy.loginfo("[sel_map] Message received!")
     pose = Pose(location=location, rotation=rot)
     # Set initial pose.
     if firstPose:
@@ -153,15 +153,11 @@ def sel_map_node(mesh_bounds, elementLength, thresholdElemToMove):
     # Subscribe
     sync_sub = message_filters.ApproximateTimeSynchronizer(sub_list, queue_size=queue_size, slop=sync_slop)
     sync_sub.registerCallback(syncedCallback)
-    print("Callbacks registered, awaiting")
+    rospy.loginfo("[sel_map] Callbacks registered, awaiting...")
 
     # Spin
-    
-    # timer = rospy.Rate(publish_rate)
-    # while not rospy.is_shutdown():
-    #     # print("Ah, ha, ha, ha, stayin' alive, stayin' alive")
-    #     timer.sleep()
     rospy.spin()
+    rospy.loginfo("[sel_map] Shutting down.")
 
 if __name__ == '__main__':
     try:

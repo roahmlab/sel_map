@@ -46,21 +46,6 @@
   <!-- Show anymal in rviz -->
   <group if="$(arg open_rviz)">
       <param name="robot_description" command="$(find xacro)/xacro $(find anymal_c)/urdf/anymal_c.urdf.xacro"/>
-
-      <!-- Joint state publisher -->
-      <!-- <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" output="screen">
-        <param name="use_gui"           value="true"/>
-        <param name="rate"              value="100"/>
-        <remap from="joint_states"      to="/state_estimator/joint_states"/>
-      </node> -->
-
-      <!-- Robot state publisher -->
-      <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
-        <param name="publish_frequency" value="100"/>
-        <param name="use_tf_static"     value="true"/>
-        <remap from="joint_states"      to="/state_estimator/joint_states"/>
-      </node> -->
-
       <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sel_map)/rviz/anymal.rviz" output="$(arg output)"/>
   </group>
 
@@ -68,6 +53,7 @@
   <group ns="sel_map">
     <rosparam command="load" file="$(find sel_map)/config/robots/$(arg robot_config)" />
     <rosparam command="load" file="$(find sel_map)/config/semseg/$(arg semseg_config)" />
+    <rosparam command="load" file="$(find sel_map)/config/colorscales/$(arg colorscale)"/>
 
     <node pkg="rosservice" type="rosservice" name="enable_front_color" args='call --wait /depth_camera_front/toggleColor "data: true"' />
     <node name="color_repub" pkg="image_transport" type="republish" args="theora in:=/depth_camera_front/color/image_raw raw out:=/depth_camera_front/color/image_decomp" />
@@ -81,7 +67,6 @@
     <param name="point_limit" type="int" value="$(arg point_limit)"/>
     <param name="publish_rate" type="double" value="$(arg publish_rate)"/>
     <param name="terrain_properties" type="string" value="$(find sel_map)/config/terrain_properties/$(arg terrain_properties)"/>
-    <param name="colorscale" type="string" value="$(find sel_map)/config/colorscales/$(arg colorscale)"/>
     <param name="enable_mat_display" type="bool" value="$(arg enable_mat_display)"/>
     <param name="save_mesh_location" type="string" value="$(arg save_mesh_location)"/>
     <param name="save_classes" type="bool" value="$(arg save_classes)"/>

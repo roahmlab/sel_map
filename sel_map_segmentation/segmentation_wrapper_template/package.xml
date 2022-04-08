@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>pytorch_encoding_wrapper</name>
+  <name>segmentation_wrapper_template</name>
   <version>0.0.0</version>
-  <description>Wraps the PyTorch Encoding networks by Hang Zhang for use with sel_map.</description>
+  <description>Template for wrapping semantic segmentation networks. Check the README.md included.</description>
 
   <maintainer email="adamli@umich.edu">Adam Li</maintainer>
 

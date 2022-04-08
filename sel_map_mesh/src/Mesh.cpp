@@ -18,7 +18,6 @@
     #include <omp.h>
 #endif
 
-using sel_map::core::ElemArray;
 using Eigen::Matrix;
 using Eigen::Array;
 using Eigen::ArrayXi;
@@ -29,16 +28,13 @@ using std::list;
 using sel_map::mesh::Mesh;
 using sel_map::mesh::PointWithCovArray_t;
 
-#include "../core/EigenMathUtil.hpp"
-namespace EigenMathUtil = sel_map::core::EigenMathUtil;
-
 template <typename TElement_t>
 Mesh<TElement_t>::Mesh(const double originHeight, const double bounds[3], double elementLength,
             unsigned int pointLimit, float heightPartition, double heightSafetyCheck, unsigned int seed)
               : pointLimit(pointLimit), heightPartition(heightPartition),
                 heightSafetyCheck(heightSafetyCheck), elementLength(elementLength),
                 points(), vertexVector(), elementsVec(), num_elements(0),
-                points_2d(points.getEigenArray().leftCols<2>()),
+                points_2d(points.leftCols<2>()),
                 point_index(2, std::cref(points_2d), max_leaf), updateTree(true)
 {
     // copy the origin and bounds
@@ -169,7 +165,7 @@ void Mesh<TElement_t>::updateKDTreeIfNeeded()
         // Destroy the old block
         points_2d.~Block();
         // Construct it with the new data
-        new(&points_2d) points_to_2d_eigen_t(points.getEigenArray().leftCols<2>());
+        new(&points_2d) points_to_2d_eigen_t(points.leftCols<2>());
         point_index.index->buildIndex();
         updateTree = false;
     }
@@ -230,7 +226,7 @@ std::pair<PointWithCovArray_t, std::vector<double> > Mesh<TElement_t>::getCloses
                         [](const std::pair<long int, double>& p) { return p.second; });
     }
     // slice the points to return
-    return std::pair<PointWithCovArray_t, std::vector<double> >(points.getEigenArray()(indices, Eigen::all), out_dist_sqr);
+    return std::pair<PointWithCovArray_t, std::vector<double> >(points(indices, Eigen::all), out_dist_sqr);
 }
 
 template <typename TElement_t>
@@ -238,10 +234,11 @@ void Mesh<TElement_t>::clean(bool lazy)
 {
     // Clear all points, then clean all elements
     if (lazy){
-        points.setEmpty();
+        points.conservativeResize(0, Eigen::NoChange);
     }
     else{
-        points.clear();
+        // No such thing as a zero array, so we just make it size one
+        points.resize(1, Eigen::NoChange);
     }
     for(auto el : elementsVec){
         el->clean(lazy);

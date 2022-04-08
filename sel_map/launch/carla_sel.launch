@@ -45,13 +45,14 @@
 
   <!-- Show spot in rviz -->
   <group if="$(arg open_rviz)">
-      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sel_map)/rviz/default.rviz" output="$(arg output)"/>
+      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sel_map)/rviz/carla.rviz" output="$(arg output)"/>
   </group>
 
   <!-- run sel_map in the namespace -->
   <group ns="sel_map">
     <rosparam command="load" file="$(find sel_map)/config/robots/$(arg robot_config)" />
     <rosparam command="load" file="$(find sel_map)/config/semseg/$(arg semseg_config)" />
+    <rosparam command="load" file="$(find sel_map)/config/colorscales/$(arg colorscale)"/>
 
     <node name="static_tf_linker" pkg="sel_map_utils" type="StaticTFLinker.py"
           output="$(arg output)" required="$(arg required)" respawn="$(arg respawn)" />
@@ -61,7 +62,6 @@
     <param name="point_limit" type="int" value="$(arg point_limit)"/>
     <param name="publish_rate" type="double" value="$(arg publish_rate)"/>
     <param name="terrain_properties" type="string" value="$(find sel_map)/config/terrain_properties/$(arg terrain_properties)"/>
-    <param name="colorscale" type="string" value="$(find sel_map)/config/colorscales/$(arg colorscale)"/>
     <param name="enable_mat_display" type="bool" value="$(arg enable_mat_display)"/>
     <param name="save_mesh_location" type="string" value="$(arg save_mesh_location)"/>
     <param name="save_classes" type="bool" value="$(arg save_classes)"/>

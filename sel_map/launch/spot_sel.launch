@@ -24,7 +24,7 @@
   <arg name="queue_size"            default="2"/>
 
   <!-- Publisher Properties -->
-  <arg name="publish_rate"          default="20"/>
+  <arg name="publish_rate"          default="1"/>
 
   <!-- Save Properties -->
   <arg name="save_mesh_location"    default=""/>
@@ -33,7 +33,7 @@
   <arg name="save_interval"         default="0"/>
 
   <!-- Run Specific Properties -->
-  <arg name="use_sim_time"          default="true"/>
+  <arg name="use_sim_time"          default="false"/>
   <arg name="external_manager"      default="false"/>
   <arg name="manager"               default="sel_map_manager"/>
   <arg name="required"              default="false"/>
@@ -53,6 +53,10 @@
   <group ns="sel_map">
     <rosparam command="load" file="$(find sel_map)/config/robots/$(arg robot_config)" />
     <rosparam command="load" file="$(find sel_map)/config/semseg/$(arg semseg_config)" />
+    <rosparam command="load" file="$(find sel_map)/config/colorscales/$(arg colorscale)"/>
+
+    <node name="color_repub" pkg="image_transport" type="republish" args="theora in:=/camera/color/image_raw raw out:=/camera/color/image_decomp" />
+    <node name="depth_repub" pkg="image_transport" type="republish" args="compressedDepth in:=/camera/aligned_depth_to_color/image_raw raw out:=/camera/aligned_depth_to_color/image_decomp" />
 
     <node name="static_tf_linker" pkg="sel_map_utils" type="StaticTFLinker.py"
           output="$(arg output)" required="$(arg required)" respawn="$(arg respawn)" />
@@ -62,7 +66,6 @@
     <param name="point_limit" type="int" value="$(arg point_limit)"/>
     <param name="publish_rate" type="double" value="$(arg publish_rate)"/>
     <param name="terrain_properties" type="string" value="$(find sel_map)/config/terrain_properties/$(arg terrain_properties)"/>
-    <param name="colorscale" type="string" value="$(find sel_map)/config/colorscales/$(arg colorscale)"/>
     <param name="enable_mat_display" type="bool" value="$(arg enable_mat_display)"/>
     <param name="save_mesh_location" type="string" value="$(arg save_mesh_location)"/>
     <param name="save_classes" type="bool" value="$(arg save_classes)"/>
