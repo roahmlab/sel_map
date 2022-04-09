@@ -48,7 +48,7 @@ Mesh<TElement_t>::Mesh(const double originHeight, const double bounds[3], double
     #if defined(_OPENMP)
         // Pregenerate random generators from the seed
         std::mt19937 gen(seed);
-        std::vector<unsigned int> seeds(omp_get_max_threads());
+        std::vector<unsigned int> seeds(omp_get_max_threads()*2);
         std::generate(seeds.begin(), seeds.end(), gen);
         gens.reserve(seeds.size());
         for(auto seed : seeds){
@@ -60,6 +60,16 @@ Mesh<TElement_t>::Mesh(const double originHeight, const double bounds[3], double
         //Otherwise, copy the 1 random generator
     #endif
 }
+
+#if defined(_OPENMP)
+template <typename TElement_t>
+void Mesh<TElement_t>::verifyAndUpdateGenerators()
+{
+    while (omp_get_max_threads() > gens.size()){
+        gens.push_back(std::mt19937(gens[0]()));
+    }
+}
+#endif
 
 template <typename TElement_t>
 void Mesh<TElement_t>::makeVertices()

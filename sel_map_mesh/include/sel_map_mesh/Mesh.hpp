@@ -74,6 +74,10 @@ namespace sel_map::mesh{
         Mesh(const double originHeight, const double bounds[3], double elementLength = 1, unsigned int pointLimit = 20,
              float heightPartition = 0.3, double heightSafetyCheck = 0.5, unsigned int seed = (std::random_device())());
 
+        #if defined(_OPENMP)
+        void verifyAndUpdateGenerators();
+        #endif
+
         void makeVertices();
 
         inline unsigned int unravelIndex(int row, int col){

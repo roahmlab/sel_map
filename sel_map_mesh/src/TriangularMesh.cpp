@@ -240,6 +240,11 @@ std::vector<unsigned int> TriangularMesh::addPointsToMesh(const Eigen::Ref<const
     std::sort(elemToUpdate.begin(), elemToUpdate.end());
 
     unsigned int accumulated_size = 0;
+
+    // Fix a nefarious bug
+    #if defined(_OPENMP)
+    verifyAndUpdateGenerators();
+    #endif
     // Update across all threads
     #pragma omp parallel reduction(+:accumulated_size)
     {
