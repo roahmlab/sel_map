@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<launch>
+  <!-- Mesh Bounds -->
+  <arg name="bound_xy" default="10"/>
+  <arg name="bound_z" default="4"/>
+  <arg name="elem_size" default="0.05"/>
+  <arg name="threshold_elem_move" default="10"/>
+  <arg name="point_limit"  default="20"/>
+
+  <!-- Data Specific Properties -->
+  <arg name="terrain_properties"  default="csail_semseg_properties.yaml"/>
+  <arg name="colorscale"  default="default.yaml"/>
+  <arg name="robot_config" default="digit.yaml"/>
+  <arg name="semseg_config"         default="CSAIL_ResNet50ppm_ADE_full.yaml"/>
+  <arg name="camera_flipped"        default="false"/>
+
+  <!-- Visualization Properties -->
+  <arg name="open_rviz"             default="true"/>
+  <arg name="enable_mat_display"    default="true"/>
+  <!-- Current version of mesh_tools crashes with this on, so we provide our own version of rviz-map-plugin -->
+
+  <!-- Subscriber Properties -->
+  <arg name="sync_slop"             default="0.3"/>
+  <arg name="queue_size"            default="2"/>
+
+  <!-- Publisher Properties -->
+  <arg name="publish_rate"          default="1"/>
+
+  <!-- Save Properties -->
+  <arg name="save_mesh_location"    default=""/>
+  <arg name="save_classes"          default="true"/>
+  <arg name="save_confidence"       default="false"/>
+  <arg name="save_interval"         default="0"/>
+
+  <!-- Run Specific Properties -->
+  <arg name="use_sim_time"          default="false"/>
+  <arg name="external_manager"      default="false"/>
+  <arg name="manager"               default="sel_map_manager"/>
+  <arg name="required"              default="false"/>
+  <arg name="output"                default="screen"/>  <!-- [ screen | log ]-->
+  <arg name="respawn"               default="false"/>
+
+  <!-- set simtime param -->
+  <param name="use_sim_time" type="bool" value="$(arg use_sim_time)"/>
+
+  <!-- Show spot in rviz -->
+  <group if="$(arg open_rviz)">
+      <include file="$(find spot_description)/launch/description.launch"/>
+      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sel_map)/rviz/spot.rviz" output="$(arg output)"/>
+  </group>
+
+  <!-- run sel_map in the namespace -->
+  <group ns="sel_map">
+    <rosparam command="load" file="$(find sel_map)/config/robots/$(arg robot_config)" />
+    <rosparam command="load" file="$(find sel_map)/config/semseg/$(arg semseg_config)" />
+    <rosparam command="load" file="$(find sel_map)/config/colorscales/$(arg colorscale)"/>
+
+    <node name="color_repub" pkg="image_transport" type="republish" args="theora in:=/camera/color/image_raw raw out:=/camera/color/image_decomp" />
+    <node name="depth_repub" pkg="image_transport" type="republish" args="compressedDepth in:=/camera/aligned_depth_to_color/image_raw raw out:=/camera/aligned_depth_to_color/image_decomp"/>
+
+    <node name="static_tf_linker" pkg="sel_map_utils" type="StaticTFLinker.py"
+          output="$(arg output)" required="$(arg required)" respawn="$(arg respawn)" />
+
+    <param name="sync_slop" type="double" value="$(arg sync_slop)"/>
+    <param name="queue_size" type="int" value="$(arg queue_size)"/>
+    <param name="point_limit" type="int" value="$(arg point_limit)"/>
+    <param name="publish_rate" type="double" value="$(arg publish_rate)"/>
+    <param name="terrain_properties" type="string" value="$(find sel_map)/config/terrain_properties/$(arg terrain_properties)"/>
+    <param name="enable_mat_display" type="bool" value="$(arg enable_mat_display)"/>
+    <param name="save_mesh_location" type="string" value="$(arg save_mesh_location)"/>
+    <param name="save_classes" type="bool" value="$(arg save_classes)"/>
+    <param name="save_confidence" type="bool" value="$(arg save_confidence)"/>
+    <param name="save_interval" type="double" value="$(arg save_interval)"/>
+
+    <node name="sel_map" pkg="sel_map" type="main.py" output="$(arg output)" required="$(arg required)" respawn="$(arg respawn)"
+          args="$(arg bound_xy) $(arg bound_xy) $(arg bound_z) $(arg elem_size) $(arg threshold_elem_move)">
+
+      <!-- Output -->
+      <remap from="mesh" to="/mesh" />
+      <remap from="mesh/costs" to="/mesh/costs" />
+      <remap from="get_materials" to="/get_materials" />
+    </node>
+  </group>
+   <node name="RealSenseTF" pkg="sel_map" type="RealSenseTF.py" output="screen"/>
+</launch>

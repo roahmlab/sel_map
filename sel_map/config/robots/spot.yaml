@@ -32,6 +32,9 @@ joints:
   #     x: 0
   #     y: 0.2292004
   #     z: 0
+  
+  
+  
   #     w: 0.9733793
   # # Angle for the snow test
   # camera_link:

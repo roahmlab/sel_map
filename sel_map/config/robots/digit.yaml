@@ -1,0 +1,107 @@
+
+# Specify what the robot base is and what the world base is
+world_base: odom
+robot_base: lidar_body
+
+# TODO
+num_cameras: 1
+update_policy: fifo
+# Configurable section
+cameras_registered:
+  realsense:
+    image_rectified: /camera/color/image_decomp
+    depth_registered: /camera/aligned_depth_to_color/image_decomp
+    camera_info: /camera/color/camera_info
+    # By not specifying these, we lookup the transform frame instead. (They do no need to be specified)
+    pose_with_covariance: ''
+    pose: ''
+# TODO: make the below work
+#cameras_raw:
+
+# Define intermediate joints needed, but id them with
+# child link to keep uniqueness.
+joints: 
+  camera_link:
+    parent: lidar_body
+    translation:
+      x: -0.007 
+      y: 0.095
+      z: -0.08
+    rotation:
+      x: -0.2705981
+      y: 0.27057981
+      z: 0.6532815
+      w: 0.6532815
+
+  # camera_depth_frame:
+  #   parent: camera_link
+  #   translation:
+  #     x: 0.
+  #     y: 0.
+  #     z: 0.
+  #   rotation:
+  #     x: 0
+  #     y: 0.
+  #     z: 0     
+  #     w: 1.
+    
+  # sel_map:
+  #   parent: odom
+  #   translation:
+  #     x: 0.
+  #     y: 0.
+  #     z: 0.
+  #   rotation:
+  #     x: 0
+  #     y: 0.
+  #     z: 0     
+  #     w: 1.
+
+  # camera_depth_frame:
+  #   parent: camera_link
+  #   translation:
+  #     x: 0.
+  #     y: 0.
+  #     z: 0.
+  #   rotation:
+  #     x: 0
+  #     y: 0.
+  #     z: 0     
+  #     w: 1.
+
+  # camera_depth_optical_frame:
+  #   parent: camera_depth_frame
+  #   translation:
+  #     x: 0.
+  #     y: 0.
+  #     z: 0.
+  #   rotation:
+  #     x: -0.5
+  #     y: 0.4999
+  #     z: -0.5  
+  #     w: 0.5
+
+  # camera_color_frame:
+  #   parent: camera_link
+  #   translation:
+  #     x: -0.00018586 
+  #     y: 0.014714504592120647
+  #     z: 0.0002965963212773204
+  #   rotation:
+  #     x: 0.0015915798721835017
+  #     y: -0.0019007287919521332
+  #     z: -0.0024069480132311583
+  #     w: 0.9999940395355225
+
+  # camera_color_optical_frame:
+  #   parent: camera_color_frame
+  #   translation:
+  #     x: 0.
+  #     y: 0.
+  #     z: 0.
+  #   rotation:
+  #     x: -0.5
+  #     y: 0.4999
+  #     z: -0.5  
+  #     w: 0.5
+
