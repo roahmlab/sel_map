@@ -2,16 +2,23 @@ cmake_minimum_required(VERSION 3.0.2)
 project(sel_map)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++14)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED
+  roscpp
+  tf2_ros
+  # rosconsole
+  # rostime
+  # roscpp_serialization
+  # tf2
+  tf_conversions
+)
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
-
+find_package(Boost REQUIRED COMPONENTS system thread)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -113,7 +120,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-# ${catkin_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -159,14 +166,24 @@ catkin_install_python(PROGRAMS
   scripts/main.py
   scripts/rviz_saved.py
   scripts/rviz_last_saved.py
+  scripts/boundingBoxPub.py
+  # scripts/RealSenseTF.py
+  # scripts/odom_adaptor.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+add_executable(RealSenseTF scripts/odom_adapt.cpp)
+# target_link_libraries(RealSenseTF -I/opt/ros/noetic/include -L/opt/ros/noetic/lib -Wl,-rpath,opt/ros/noetic/lib -lroscpp -lrosconsole -lrostime -lroscpp_serialization -lboost_system -lboost_thread -ltf2_ros -ltf2 -ltf_conversions -pthread -lactionlib
+# )
+target_link_libraries(RealSenseTF
+  ${catkin_LIBRARIES}
 )
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
-# install(TARGETS ${PROJECT_NAME}_node
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+install(TARGETS RealSenseTF
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark libraries for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_libraries.html

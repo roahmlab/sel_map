@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: fastscnn_wrapper
+Description: Description of fastscnn_wrapper
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

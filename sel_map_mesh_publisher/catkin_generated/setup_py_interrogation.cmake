@@ -1,0 +1,7 @@
+set(sel_map_mesh_publisher_SETUP_PY_SETUP_MODULE "distutils.core")
+set(sel_map_mesh_publisher_SETUP_PY_VERSION "0.0.0")
+set(sel_map_mesh_publisher_SETUP_PY_SCRIPTS "")
+set(sel_map_mesh_publisher_SETUP_PY_PACKAGES "sel_map_mesh_publisher")
+set(sel_map_mesh_publisher_SETUP_PY_PACKAGE_DIRS "src/sel_map_mesh_publisher")
+set(sel_map_mesh_publisher_SETUP_PY_MODULES "")
+set(sel_map_mesh_publisher_SETUP_PY_MODULE_DIRS "")

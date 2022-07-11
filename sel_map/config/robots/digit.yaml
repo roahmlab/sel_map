@@ -1,7 +1,7 @@
 
 # Specify what the robot base is and what the world base is
-world_base: odom
-robot_base: lidar_body
+world_base: map
+robot_base: base_link
 
 # TODO
 num_cameras: 1
@@ -9,29 +9,46 @@ update_policy: fifo
 # Configurable section
 cameras_registered:
   realsense:
-    image_rectified: /camera/color/image_decomp
-    depth_registered: /camera/aligned_depth_to_color/image_decomp
-    camera_info: /camera/color/camera_info
+    image_rectified: /camera/color/image_raw
+    depth_registered: /camera/aligned_depth_to_color/image_raw
+    camera_info: /camera/aligned_depth_to_color/camera_info
     # By not specifying these, we lookup the transform frame instead. (They do no need to be specified)
     pose_with_covariance: ''
-    pose: ''
+    # pose: /realsCamPose
+    pose: '/cam_pose'
+    # odom: '/odometry/imu'
 # TODO: make the below work
 #cameras_raw:
 
 # Define intermediate joints needed, but id them with
-# child link to keep uniqueness.
+# child link to keep uniqueness. 
+# last working angle 31.5 
 joints: 
   camera_link:
-    parent: lidar_body
+    parent: base_link
     translation:
-      x: -0.007 
-      y: 0.095
-      z: -0.08
+      x: 0.127 
+      y: 0.0175
+      z: -0.1878
     rotation:
-      x: -0.2705981
-      y: 0.27057981
-      z: 0.6532815
-      w: 0.6532815
+      x: 0.0
+      y: 0.2714404
+      z: 0.0
+      w: 0.9624552
+
+  # camera_link:
+  #   parent: lidar_body
+  #   translation:
+  #     x: -0.007 
+  #     y: 0.095
+  #     z: -0.08
+  #   rotation:
+  #     x: -0.2705981
+  #     y: 0.27057981
+  #     z: 0.6532815
+  #     w: 0.6532815
+#  using lidar mount v1
+
 
   # camera_depth_frame:
   #   parent: camera_link

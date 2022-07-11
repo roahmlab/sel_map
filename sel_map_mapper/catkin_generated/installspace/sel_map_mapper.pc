@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: sel_map_mapper
+Description: Description of sel_map_mapper
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

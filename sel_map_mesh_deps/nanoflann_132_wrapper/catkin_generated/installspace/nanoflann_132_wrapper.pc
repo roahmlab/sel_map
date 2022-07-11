@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: nanoflann_132_wrapper
+Description: Description of nanoflann_132_wrapper
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

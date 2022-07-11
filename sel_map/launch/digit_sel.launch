@@ -57,7 +57,8 @@
 
     <node name="color_repub" pkg="image_transport" type="republish" args="theora in:=/camera/color/image_raw raw out:=/camera/color/image_decomp" />
     <node name="depth_repub" pkg="image_transport" type="republish" args="compressedDepth in:=/camera/aligned_depth_to_color/image_raw raw out:=/camera/aligned_depth_to_color/image_decomp"/>
-
+    <!-- <node name="depth_repub" pkg="image_transport" type="republish" args="compressedDepth in:=/camera/depth/image_rect_raw raw out:=/camera/depth/image_decomp"/> -->
+    <node name="RealSenseTF" pkg="sel_map" type="odom_adapt" />
     <node name="static_tf_linker" pkg="sel_map_utils" type="StaticTFLinker.py"
           output="$(arg output)" required="$(arg required)" respawn="$(arg respawn)" />
 
@@ -80,6 +81,6 @@
       <remap from="mesh/costs" to="/mesh/costs" />
       <remap from="get_materials" to="/get_materials" />
     </node>
+    <!-- <node name="RealSenseTF" pkg="sel_map" type="RealSenseTF.py" respawn="true"/> -->
   </group>
-   <node name="RealSenseTF" pkg="sel_map" type="RealSenseTF.py" output="screen"/>
 </launch>

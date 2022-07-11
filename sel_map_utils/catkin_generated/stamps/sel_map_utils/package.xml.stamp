@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sel_map_utils</name>
+  <version>0.0.0</version>
+  <description>The sel_map_utils package</description>
+
+  <maintainer email="author@todo.todo">author</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>rospy</exec_depend>
+  <!-- TODO: Add other messages and whatnot -->
+</package>

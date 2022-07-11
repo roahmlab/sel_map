@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/sel_map/sel_map_segmentation/pytorch_encoding_wrapper/CMakeFiles/pytorch_encoding"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/sel_map/sel_map_segmentation/pytorch_encoding_wrapper/CMakeFiles/pytorch_encoding.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/sel_map/sel_map_segmentation/pytorch_encoding_wrapper/CMakeFiles/pytorch_encoding-complete.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/pytorch_encoding/src/pytorch_encoding-stamp/pytorch_encoding-install.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/pytorch_encoding/src/pytorch_encoding-stamp/pytorch_encoding-mkdir.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/pytorch_encoding/src/pytorch_encoding-stamp/pytorch_encoding-download.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/pytorch_encoding/src/pytorch_encoding-stamp/pytorch_encoding-update.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/pytorch_encoding/src/pytorch_encoding-stamp/pytorch_encoding-patch.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/pytorch_encoding/src/pytorch_encoding-stamp/pytorch_encoding-configure.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/pytorch_encoding/src/pytorch_encoding-stamp/pytorch_encoding-build.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/pytorch_encoding/src/pytorch_encoding-stamp/pytorch_encoding-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"pytorch_encoding"
+		],
+		"name" : "pytorch_encoding"
+	}
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sel_map_mesh</name>
+  <version>0.0.0</version>
+  <description>The sel_map_mesh package</description>
+
+  <maintainer email="author@todo.todo">author</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>eigen_340_wrapper</depend>
+  <depend>nanoflann_132_wrapper</depend>
+</package>

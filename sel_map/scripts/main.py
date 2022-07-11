@@ -1,7 +1,8 @@
 import rospy
 import message_filters
 from sensor_msgs.msg import Image, CameraInfo
-from geometry_msgs.msg import PoseWithCovarianceStamped, Pose
+from geometry_msgs.msg import PoseWithCovarianceStamped, Pose, PoseStamped
+from nav_msgs.msg import Odometry
 from tf.transformations import quaternion_matrix
 from sel_map_mapper import Pose, Mapper, SaveOptions
 from sel_map_mesh import TriangularMesh
@@ -43,10 +44,12 @@ def syncedCallback(rgb, depth, info, pose=None, meta=None):
         rot = quaternion_matrix([rot.x, rot.y, rot.z, rot.w])
         rot = rot[:3,:3] @ np.array([[0, -1, 0], [0, 0, -1], [1, 0, 0]])
     else:
-        try:
-            pose = pose.pose # Adapt for with covariance, but ignore that for now.
-        except:
-            pass
+        # try:
+        #     pose = pose.pose # Adapt for with covariance, but ignore that for now.
+        # except:
+        #     pass
+        # pose = pose.pose
+        # print(pose)
         rot = quaternion_matrix([pose.pose.orientation.x, pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w])
         rot = rot[:3,:3]
         location = np.array([pose.pose.position.x, pose.pose.position.y, pose.pose.position.z])
@@ -55,7 +58,7 @@ def syncedCallback(rgb, depth, info, pose=None, meta=None):
     # Set initial pose.
     if firstPose:
         map.frame.origin.location[0:2] = location[0:2]
-        initialTime = rospy.Time.now()
+        initialTime = rospy.Time.now() 
         firstPose = False
 
     # get images ready using CVBridge
@@ -120,6 +123,7 @@ def sel_map_node(mesh_bounds, elementLength, thresholdElemToMove):
 
     cameras = rospy.get_param("cameras_registered", None)
     cameras = list(cameras.items())[0][1]
+    print(cameras)
 
     saveOpts = SaveOptions()
     if len(save_mesh_location) > 0:
@@ -147,7 +151,12 @@ def sel_map_node(mesh_bounds, elementLength, thresholdElemToMove):
     elif "pose" in cameras \
         and cameras["pose"] is not None \
         and len(cameras["pose"]) > 0:
-        pose_sub = message_filters.Subscriber(cameras["pose"], Pose)
+        pose_sub = message_filters.Subscriber(cameras["pose"], PoseStamped)
+        sub_list.append(pose_sub)
+    elif "odom" in cameras \
+        and cameras["odom"] is not None \
+        and len(cameras["odom"]) > 0:
+        pose_sub = message_filters.Subscriber(cameras["odom"], Odometry)
         sub_list.append(pose_sub)
 
     # Subscribe

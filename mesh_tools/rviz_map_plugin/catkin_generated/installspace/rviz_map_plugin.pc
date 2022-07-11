@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: rviz_map_plugin
+Description: Description of rviz_map_plugin
+Version: 1.1.0
+Cflags: -I/usr/include -I/usr/include/hdf5/serial
+Libs: -L${prefix}/lib /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0 /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5_cpp.so /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so /usr/lib/x86_64-linux-gnu/libpthread.so /usr/lib/x86_64-linux-gnu/libsz.so /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/libdl.so /usr/lib/x86_64-linux-gnu/libm.so /usr/lib/x86_64-linux-gnu/libOpenCL.so
+Requires: roscpp rviz std_msgs mesh_msgs hdf5_map_io

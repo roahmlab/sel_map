@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/sel_map/sel_map_segmentation/fastscnn_wrapper/CMakeFiles/fast_scnn"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/sel_map/sel_map_segmentation/fastscnn_wrapper/CMakeFiles/fast_scnn.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/sel_map/sel_map_segmentation/fastscnn_wrapper/CMakeFiles/fast_scnn-complete.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/fast_scnn/src/fast_scnn-stamp/fast_scnn-install.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/fast_scnn/src/fast_scnn-stamp/fast_scnn-mkdir.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/fast_scnn/src/fast_scnn-stamp/fast_scnn-download.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/fast_scnn/src/fast_scnn-stamp/fast_scnn-update.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/fast_scnn/src/fast_scnn-stamp/fast_scnn-patch.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/fast_scnn/src/fast_scnn-stamp/fast_scnn-configure.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/fast_scnn/src/fast_scnn-stamp/fast_scnn-build.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/fast_scnn/src/fast_scnn-stamp/fast_scnn-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"fast_scnn"
+		],
+		"name" : "fast_scnn"
+	}
+}

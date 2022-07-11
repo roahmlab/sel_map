@@ -1,0 +1,7 @@
+set(pytorch_encoding_wrapper_SETUP_PY_SETUP_MODULE "distutils.core")
+set(pytorch_encoding_wrapper_SETUP_PY_VERSION "0.0.0")
+set(pytorch_encoding_wrapper_SETUP_PY_SCRIPTS "")
+set(pytorch_encoding_wrapper_SETUP_PY_PACKAGES "encoding;pytorch_encoding_wrapper")
+set(pytorch_encoding_wrapper_SETUP_PY_PACKAGE_DIRS "src/encoding;src/pytorch_encoding_wrapper")
+set(pytorch_encoding_wrapper_SETUP_PY_MODULES "")
+set(pytorch_encoding_wrapper_SETUP_PY_MODULE_DIRS "")

@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: pytorch_encoding_wrapper
+Description: Description of pytorch_encoding_wrapper
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

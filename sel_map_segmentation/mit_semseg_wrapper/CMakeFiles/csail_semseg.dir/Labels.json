@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/sel_map/sel_map_segmentation/mit_semseg_wrapper/CMakeFiles/csail_semseg"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/sel_map/sel_map_segmentation/mit_semseg_wrapper/CMakeFiles/csail_semseg.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/sel_map/sel_map_segmentation/mit_semseg_wrapper/CMakeFiles/csail_semseg-complete.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/csail_semseg/src/csail_semseg-stamp/csail_semseg-install.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/csail_semseg/src/csail_semseg-stamp/csail_semseg-mkdir.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/csail_semseg/src/csail_semseg-stamp/csail_semseg-download.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/csail_semseg/src/csail_semseg-stamp/csail_semseg-update.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/csail_semseg/src/csail_semseg-stamp/csail_semseg-patch.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/csail_semseg/src/csail_semseg-stamp/csail_semseg-configure.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/csail_semseg/src/csail_semseg-stamp/csail_semseg-build.rule"
+		},
+		{
+			"file" : "/home/firefly/ROAHM/sel_map_ws/src/ext_src/csail_semseg/src/csail_semseg-stamp/csail_semseg-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"csail_semseg"
+		],
+		"name" : "csail_semseg"
+	}
+}

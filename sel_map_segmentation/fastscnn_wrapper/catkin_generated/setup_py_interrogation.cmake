@@ -1,0 +1,7 @@
+set(fastscnn_wrapper_SETUP_PY_SETUP_MODULE "distutils.core")
+set(fastscnn_wrapper_SETUP_PY_VERSION "0.0.0")
+set(fastscnn_wrapper_SETUP_PY_SCRIPTS "")
+set(fastscnn_wrapper_SETUP_PY_PACKAGES "fastscnn_wrapper;fast_scnn")
+set(fastscnn_wrapper_SETUP_PY_PACKAGE_DIRS "src/fastscnn_wrapper;src/fast_scnn")
+set(fastscnn_wrapper_SETUP_PY_MODULES "")
+set(fastscnn_wrapper_SETUP_PY_MODULE_DIRS "")

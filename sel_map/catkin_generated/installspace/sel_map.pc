@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: sel_map
+Description: Description of sel_map
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,7 @@
+set(mit_semseg_wrapper_SETUP_PY_SETUP_MODULE "distutils.core")
+set(mit_semseg_wrapper_SETUP_PY_VERSION "0.0.0")
+set(mit_semseg_wrapper_SETUP_PY_SCRIPTS "")
+set(mit_semseg_wrapper_SETUP_PY_PACKAGES "mit_semseg_wrapper;mit_semseg")
+set(mit_semseg_wrapper_SETUP_PY_PACKAGE_DIRS "src/mit_semseg_wrapper;src/mit_semseg")
+set(mit_semseg_wrapper_SETUP_PY_MODULES "")
+set(mit_semseg_wrapper_SETUP_PY_MODULE_DIRS "")

@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: eigen_340_wrapper
+Description: Description of eigen_340_wrapper
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 
