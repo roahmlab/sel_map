@@ -10,7 +10,6 @@
 
 #include "Defs.hpp"
 #include <random>
-#include "core/ElemArray.hpp"
 #include "Mesh.hpp"
 #include "TriangleElement.hpp"
 

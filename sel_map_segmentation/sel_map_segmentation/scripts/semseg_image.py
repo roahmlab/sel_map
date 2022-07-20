@@ -69,7 +69,8 @@ if __name__ == '__main__':
 
     # Load in a colorscale
     if colorscale_filename is not None:
-        colorscale = ColorScale(colorscale_filename=colorscale_filename)
+        with open(colorscale_filename) as file:
+            colorscale = ColorScale(args=yaml.load(file, Loader=yaml.FullLoader)['colorscale'])
         colors = np.zeros([256,3], dtype=np.uint8)
         if colorscale.bypass:
             for prop in properties:

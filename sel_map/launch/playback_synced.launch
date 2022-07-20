@@ -17,14 +17,13 @@
   <arg name="use_sim_time"  default="true"/>
 
   <!-- Show in rviz -->
-  <node unless="$(arg rviz_open)" name="rviz" pkg="rviz" type="rviz" args="-d $(find sel_map)/rviz/mesh_view.rviz" output="$(arg output)"/>
+  <node unless="$(arg rviz_open)" name="rviz" pkg="rviz" type="rviz" args="-d $(find sel_map)/rviz/default.rviz" output="$(arg output)"/>
 
   <!-- set simtime param -->
   <param name="use_sim_time" type="bool" value="$(arg use_sim_time)"/>
 
   <group if="$(arg show_robot)">
     <rosparam command="load" file="$(find sel_map)/config/robots/$(arg robot_config)" />
-    <include file="$(find spot_description)/launch/description.launch"/>
   </group>
 
   <!-- run sel_map in the namespace -->

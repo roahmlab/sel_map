@@ -154,7 +154,7 @@ class SemanticSegmentationNetwork():
 	def round2nearest_multiple(self, x, p):
 		return ((x - 1) // p + 1) * p
 
-	def runSegmentation(self, image, return_numpy=True, one_hot=False):
+	def runSegmentation(self, image:Image, return_numpy=True, one_hot=False):
 		'''
 		Passes an image through the network and returns the pixelwise terrain class
 		categorical probabilities.

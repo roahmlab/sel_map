@@ -11,10 +11,6 @@
 #include <iostream>
 #include "TriangularMesh.hpp"
 
-using sel_map::core::ElemArray;
-using sel_map::core::ElemArrayDynamic;
-using sel_map::core::ElemArrayBase;
-
 //Avoid rewriting the whole thing everytime
 using sel_map::mesh::Element;
 using sel_map::mesh::RowArray_t;

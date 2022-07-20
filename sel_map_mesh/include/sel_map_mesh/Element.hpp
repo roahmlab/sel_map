@@ -9,7 +9,6 @@
 #include "Defs.hpp"
 #include <random>
 #include <vector>
-#include "core/ElemArray.hpp"
 
 // Placing all lib elements into a sel_map namespace, partly in case this is extended upon later, partly to reduce pollution.
 namespace sel_map::mesh{

@@ -3,34 +3,24 @@ import yaml
 
 
 class ColorScale():
-    def __init__(self, colorscale_filename=None):
-        with open(colorscale_filename) as file:
-            cfg = yaml.load(file, Loader=yaml.FullLoader)
-        
-        self.bypass = not cfg['type'].lower() in ("linear_ends", "custom")
+    def __init__(self, args=None):
+        self.bypass = not args['type'].lower() in ("linear_ends", "custom")
         self.colorscale = {0: [0,0,0], 1: [255,255,255]}
         self.unknown_color = [120, 120, 120]
         self.bounds = (0, 1)
-        
-        # Communicate out if we're bypassing
-        try:
-            import rospy
-            rospy.set_param("color_bypass", self.bypass)
-        except:
-            pass
 
         # Parse the colorscale
         if not self.bypass:
-            self.unknown_color = np.fromstring(cfg['unknown'], dtype=np.uint8, sep=',')
-            colorlist = [np.fromstring(values, dtype=np.uint8, sep=',') for values in cfg['values']]
+            self.unknown_color = np.fromstring(args['unknown'], dtype=np.uint8, sep=',')
+            colorlist = [np.fromstring(values, dtype=np.uint8, sep=',') for values in args['values']]
             
-            if cfg['type'].lower() == "linear_ends":
-                indices = np.linspace(cfg['stops'][0], cfg['stops'][1], num=len(colorlist), endpoint=True)
+            if args['type'].lower() == "linear_ends":
+                indices = np.linspace(args['stops'][0], args['stops'][1], num=len(colorlist), endpoint=True)
                 self.colorscale = dict(zip(indices, colorlist))
                 self.bounds = (np.min(indices), np.max(indices))
             
-            elif cfg['type'].lower() == "custom":
-                indices = np.array(cfg['stops'])
+            elif args['type'].lower() == "custom":
+                indices = np.array(args['stops'])
                 # There need to be enough indices for the colors provided!
                 assert(len(indices) == len(colorlist))
                 self.colorscale = dict(zip(indices, colorlist))
@@ -38,7 +28,7 @@ class ColorScale():
             
             # check for absolute ends (optional)
             try:
-                ends = cfg['ends']
+                ends = args['ends']
                 ends = {0: np.fromstring(ends['zero'], dtype=np.uint8, sep=','),
                         1: np.fromstring(ends['one'],  dtype=np.uint8, sep=','),}
                 self.colorscale.update(ends)

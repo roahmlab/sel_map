@@ -14,11 +14,6 @@
 using sel_map::mesh::TriangularMesh;
 using sel_map::mesh::RowArray_t;
 using sel_map::mesh::TriangleElement;
-using sel_map::core::ElemArray;
-using sel_map::core::ElemArrayDynamic;
-
-#include "core/EigenMathUtil.hpp"
-namespace EigenMathUtil = sel_map::core::EigenMathUtil;
 
 TriangularMesh::TriangularMesh(const double bounds[3], const double originHeight, double elementLength, unsigned int pointLimit,
                               float heightPartition, double heightSafetyCheck, unsigned int terrainClasses, bool groundTruth,
@@ -244,9 +239,14 @@ std::vector<unsigned int> TriangularMesh::addPointsToMesh(const Eigen::Ref<const
 
     std::sort(elemToUpdate.begin(), elemToUpdate.end());
 
-    // unsigned int accumulated_size = 0;
+    unsigned int accumulated_size = 0;
+
+    // Fix a nefarious bug
+    #if defined(_OPENMP)
+    verifyAndUpdateGenerators();
+    #endif
     // Update across all threads
-    #pragma omp parallel
+    #pragma omp parallel reduction(+:accumulated_size)
     {
         int threadId = 1;
         #if defined(_OPENMP)
@@ -269,15 +269,20 @@ std::vector<unsigned int> TriangularMesh::addPointsToMesh(const Eigen::Ref<const
             // Get new idx's
             indices[el_idx] = element.addPoints(indices[el_idx], points, gens[threadId]);
 
+            accumulated_size += indices[el_idx].size();
+
             // to be calculated if needed
             // element.cartesianToBarycentric();
         }
     }
 
-    // this->points.reserve(accumulated_size);
+    this->points.conservativeResize(accumulated_size, Eigen::NoChange);
+    unsigned int start = 0;
     for (auto sparse_idx_vec : elemToUpdate){
         // if(indices[sparse_idx_vec].size() == 0) continue;
-        this->points.append(points(indices[sparse_idx_vec], Eigen::seqN(Eigen::fix<0>(), Eigen::fix<4>())));
+        unsigned int size = indices[sparse_idx_vec].size();
+        this->points.middleRows(start, size) = points(indices[sparse_idx_vec], Eigen::seqN(Eigen::fix<0>(), Eigen::fix<4>()));
+        start += size;
     }
     updateTree = true;
     return elemToUpdate;

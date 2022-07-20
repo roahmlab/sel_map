@@ -190,8 +190,11 @@ with open(property_file) as file:
     keys_list = list(prop_dict)
 
 # Load the colorscale
-colorscale_filename = rospy.get_param("colorscale", os.path.join(path, "config/colorscales/default.yaml"))
-colorscale = ColorScale(colorscale_filename=colorscale_filename)
+colorscale_args = rospy.get_param("colorscale", None)
+if colorscale_args is None:
+    with open(os.path.join(path, "config/colorscales/default.yaml")) as file:
+        colorscale_args = yaml.load(file, Loader=yaml.FullLoader)['colorscale']
+colorscale = ColorScale(args=colorscale_args)
 if colorscale.bypass:
     # we're not using the colorscale here, so use properties instead
     _materials = [ColorRGBA(float(prop_dict[key]['color']['R'])/255.0,

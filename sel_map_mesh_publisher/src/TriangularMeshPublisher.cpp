@@ -6,6 +6,8 @@
 
 #include <sel_map_mesh/Defs.hpp>
 #include <sel_map_mesh/TriangularMesh.hpp>
+// #include <boost/uuid/uuid.hpp>
+// #include <boost/uuid/uuid_generators.hpp>
 
 #include "TriangularMeshDataAdaptor.hpp"
 
@@ -51,7 +53,7 @@ void TriangularMeshPublisher<MeshAdaptorType>::publishMesh()
     cached_message.mesh_geometry.faces.faces_ptr                    = mesh_adaptor.get_faces();
 
     // Publish it only if we have any vertices
-    if (cached_message.mesh_geometry.vertices.vertices_ptr->rows())
+    if (cached_message.mesh_geometry.vertices.vertices_ptr->rows()) 
         mesh_publisher.publish(cached_message);
 };
 

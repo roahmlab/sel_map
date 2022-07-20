@@ -1,0 +1,23 @@
+
+# Specify what the robot base is and what the world base is
+world_base: odom
+robot_base: base
+
+# TODO
+num_cameras: 1
+update_policy: fifo
+# Configurable section
+cameras_registered:
+  realsense:
+    image_rectified: /depth_camera_front/color/image_decomp
+    depth_registered: /depth_camera_front/aligned_depth_to_color/image_decomp
+    camera_info: /depth_camera_front/aligned_depth_to_color/camera_info
+    # By not specifying these, we lookup the transform frame instead. (They do no need to be specified)
+    pose_with_covariance: ''
+    pose: ''
+# TODO: make the below work
+#cameras_raw:
+
+# Define intermediate joints needed, but id them with
+# child link to keep uniqueness.
+joints: ''

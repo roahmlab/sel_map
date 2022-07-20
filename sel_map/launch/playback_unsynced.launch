@@ -24,7 +24,6 @@
 
   <group if="$(arg show_robot)">
     <rosparam command="load" file="$(find sel_map)/config/robots/$(arg robot_config)" />
-    <include file="$(find spot_description)/launch/description.launch"/>
   </group>
 
   <!-- run sel_map in the namespace -->
