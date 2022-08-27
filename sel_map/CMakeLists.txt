@@ -167,21 +167,21 @@ catkin_install_python(PROGRAMS
   scripts/rviz_saved.py
   scripts/rviz_last_saved.py
   scripts/boundingBoxPub.py
-  # scripts/RealSenseTF.py
+  # scripts/odom_adapt.py
   # scripts/odom_adaptor.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-add_executable(RealSenseTF scripts/odom_adapt.cpp)
-# target_link_libraries(RealSenseTF -I/opt/ros/noetic/include -L/opt/ros/noetic/lib -Wl,-rpath,opt/ros/noetic/lib -lroscpp -lrosconsole -lrostime -lroscpp_serialization -lboost_system -lboost_thread -ltf2_ros -ltf2 -ltf_conversions -pthread -lactionlib
+add_executable(odom_adapt scripts/odom_adapt.cpp)
+# target_link_libraries(odom_adapt -I/opt/ros/noetic/include -L/opt/ros/noetic/lib -Wl,-rpath,opt/ros/noetic/lib -lroscpp -lrosconsole -lrostime -lroscpp_serialization -lboost_system -lboost_thread -ltf2_ros -ltf2 -ltf_conversions -pthread -lactionlib
 # )
-target_link_libraries(RealSenseTF
+target_link_libraries(odom_adapt
   ${catkin_LIBRARIES}
 )
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
-install(TARGETS RealSenseTF
+install(TARGETS odom_adapt
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

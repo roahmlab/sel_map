@@ -66,6 +66,8 @@ class CameraSensor():
 		if vis and vispath:
 			self.network.visualize_result(self.rgb, self.scores, vispath)
 
+
+		# max depth should be a parameters 
 	def projectMeasurementsIntoSensorFrame(self, intrinsic=None, R=None, min_depth=0, max_depth=5.0):
 		# (Intrinsic) K Matrix
 		k = intrinsic
@@ -257,7 +259,6 @@ class CameraSensor():
 			pc, scores = self.projectMeasurementsIntoSensorFrame(intrinsic=intrinsic, R=R, min_depth=min_depth, max_depth=max_depth)
 			# Reduce unneccesary memory copies
 			point_cloud_with_labels = np.column_stack((pc, self.computePointCovariance_test(pc), scores))
-
 		return point_cloud_with_labels
 
 	def getProjectedPointCloudWithoutLabels(self):

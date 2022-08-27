@@ -84,7 +84,6 @@ class Map:
             except OSError:
                 pass
 
-        
         self.thresholdElemToMove = thresholdElemToMove
         # self.pub_mesh = rospy.Publisher(mesh_topic, MeshGeometryStamped, queue_size=10)
         # self.time_delay = rospy.Duration(0)

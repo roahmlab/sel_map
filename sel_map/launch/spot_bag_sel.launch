@@ -78,5 +78,5 @@
       <remap from="get_materials" to="/get_materials" />
     </node>
   </group>
-  <node name="boundingBoxPub" pkg="sel_map" type="boundingBoxPub2ahh.py" respawn="false" output="screen" launch-prefix="gnome-terminal --command"/>
+  <node name="boundingBoxPub" pkg="sel_map" type="boundingBoxPub.py" />
 </launch>

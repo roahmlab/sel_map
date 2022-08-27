@@ -49,7 +49,7 @@ def callback(msg_in):
         # (trans,rot) = transform_stamped_to_pq(temp)
         # trans = [0,0,0]
         # rot = [0,0,0,1]
-        trans = np.array([0.140, 0.0, -0.0705])
+        trans = np.array([0.120, 0.0, -0.0705])
         rot = np.array([0.0, 0.258819, 0.0, 0.9659258])
         # temp = tfBuffer.lookup_transform('odom', 'back', rospy.Time(0))
         # (trans_depth,rot_depth) = transform_stamped_to_pq(temp)

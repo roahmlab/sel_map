@@ -15,7 +15,7 @@ cameras_registered:
     # By not specifying these, we lookup the transform frame instead. (They do no need to be specified)
     pose_with_covariance: ''
     # pose: /realsCamPose
-    pose: '/cam_pose'
+    pose: '/sel_map/cam_pose'
     # odom: '/odometry/imu'
 # TODO: make the below work
 #cameras_raw:

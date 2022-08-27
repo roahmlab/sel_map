@@ -43,9 +43,9 @@ def callback(mesh,tfBuffer ,pub, viz_pub,viz_pose):
         return
     meshPoints_thres = meshPoints[meshPoints[:,2] > -5.29]
 
-    print("id: ", mesh.header.seq, "; point: ", np.amax(meshPoints[:,2]))
-    # print(meshPoints2D.shape)
-    print("transform gpe,", trans.transform.translation.z)
+    # print("id: ", mesh.header.seq, "; point: ", np.amax(meshPoints[:,2]))
+    # # print(meshPoints2D.shape)
+    # print("transform gpe,", trans.transform.translation.z)
     # ground wrt to robot frame
     ground_ = trans.transform.translation.z 
 
@@ -64,8 +64,8 @@ def callback(mesh,tfBuffer ,pub, viz_pub,viz_pose):
 
     # print(model.labels_)
     
-    hulls_2d = []
-    hulls_2d_points = []
+    # hulls_2d = []
+    # hulls_2d_points = []
     clusters_points = []
     cluster_orignal = []
     obstacle_bbs = []
@@ -100,14 +100,15 @@ def callback(mesh,tfBuffer ,pub, viz_pub,viz_pose):
         # print(np.amax(cluster[:,2]))
         temp2[:,2]= np.amax(cluster[:,2])
         cluster2D = np.vstack((temp1,temp2))
-        clusters_points.append(cluster)
+        clusters_points.append(cluster2D)
         # print(cluster)
 
 
     # print(len(obstacles))
-        pcd = open3d.geometry.PointCloud(points=open3d.utility.Vector3dVector(cluster2D))
-        obstacle_bbs.append(pcd.get_oriented_bounding_box( robust =True))
-        print(obstacle_bbs)
+        # pcd = open3d.geometry.PointCloud(points=open3d.utility.Vector3dVector(cluster2D))
+        # obstacle_bbs.append(pcd.get_oriented_bounding_box( robust =True))
+        obstacle_bbs.append(open3d.geometry.OrientedBoundingBox.create_from_points(points=open3d.utility.Vector3dVector(cluster2D), robust = True))
+        # print(obstacle_bbs)
         # except:
         #     continue
 
@@ -119,7 +120,7 @@ def callback(mesh,tfBuffer ,pub, viz_pub,viz_pose):
 
     
     
-    markerarray = MarkerArray()
+    # markerarray = MarkerArray()
     # delmarker = Marker()
 
     # delmarker.action = delmarker.DELETEALL
@@ -137,21 +138,21 @@ def callback(mesh,tfBuffer ,pub, viz_pub,viz_pose):
         Obb_pose.pose.position.z = obstacle_bbs[i].center[2]
         
         
-        print("Obs - %u"%(i))
+        # print("Obs - %u"%(i))
         
         rot = np.copy(obstacle_bbs[i].R)
-        print(rot)
-        print(np.linalg.det(rot))
+        # print(rot)
+        # print(np.linalg.det(rot))
         
-        # print(orient)
-        if np.linalg.det(rot) < 0:         
-            rot =  np.multiply(np.linalg.inv(np.copy(rot)),np.asarray([[-1], [-1.], [-1.] ]))
+        # # print(orient)
+        # if np.linalg.det(rot) < 0:         
+        #     rot =  np.multiply(np.linalg.inv(np.copy(rot)),np.asarray([[-1], [-1.], [-1.] ]))
         orient = Rotation.from_matrix(rot).as_quat()
-        orient[:3] = -1*orient[:3]
-        print(orient)
-        print(np.linalg.norm(orient))
-        print(np.linalg.det(rot))
-        print("......")
+        # orient[:3] = -1*orient[:3]
+        # print(orient)
+        # print(np.linalg.norm(orient))
+        # print(np.linalg.det(rot))
+        # print("......")
 
         
         Obb_pose.pose.orientation.x = orient[0]
@@ -163,23 +164,23 @@ def callback(mesh,tfBuffer ,pub, viz_pub,viz_pose):
         # print(Obb.pose.position.x)
         # print(obstacle_bbs[i].extent)
 
-        Obb.extents.x = obstacle_bbs[i].extent[0]
-        Obb.extents.y = obstacle_bbs[i].extent[1]
-        Obb.extents.z = obstacle_bbs[i].extent[2]
+        Obb.extents.x = obstacle_bbs[i].extent[0] + 0.05
+        Obb.extents.y = obstacle_bbs[i].extent[1] + 0.05
+        Obb.extents.z = obstacle_bbs[i].extent[2]+ 0.05
         # print(Obb.extents)
         pub.publish(Obb)
         # print(Obb)
-        # for visaulization 
-        points =np.asarray(obstacle_bbs[i].get_box_points())
-        # print(points)
-        # print(clusters_points[i])
-        # k = input()
-        # if k == 65:
-        # ax = plt.axes(projection= '3d')
-        # ax.scatter3D(clusters_points[i][:,0],clusters_points[i][:,1],clusters_points[i][:,2], color='r')
-        # ax.scatter3D(cluster_orignal[i][:,0],cluster_orignal[i][:,1],cluster_orignal[i][:,2], color='g')
-        # ax.scatter3D(points[:,0],points[:,1],points[:,2], color='b')
-        # plt.show()
+        # # for visaulization 
+        # points =np.asarray(obstacle_bbs[i].get_box_points())
+        # # print(points)
+        # # print(clusters_points[i])
+        # # # k = input()
+        # # # if k == 65:
+        # # ax = plt.axes(projection= '3d')
+        # # ax.scatter3D(clusters_points[i][:,0],clusters_points[i][:,1],clusters_points[i][:,2], color='r')
+        # # ax.scatter3D(cluster_orignal[i][:,0],cluster_orignal[i][:,1],cluster_orignal[i][:,2], color='g')
+        # # ax.scatter3D(points[:,0],points[:,1],points[:,2], color='b')
+        # # plt.show()
 
         # 2d bounding 
         # ((x,y), (ext_x,ext_y), rot) = cv2.minAreaRect(clusters_points[i][:,:2])

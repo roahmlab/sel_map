@@ -94,7 +94,7 @@ int main(int argc, char* argv[])
 {
 
     // init ros
-  ros::init(argc, argv, "RealSenseTF");
+  ros::init(argc, argv, "odom_adapt");
   ros::NodeHandle n;
   tf2_ros::TransformListener tfListener(tfBuffer);
 
