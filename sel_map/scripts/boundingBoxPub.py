@@ -6,7 +6,7 @@ import rospy
 import message_filters
 from mesh_msgs.msg import MeshGeometryStamped
 from visualization_msgs.msg import Marker, MarkerArray
-from geometry_msgs.msg import Pose, Point32, Point, PoseStamped
+from geometry_msgs.msg import Pose, Point32, Point, PoseStamped, PoseWithCovarianceStamped
 from moveit_msgs.msg import OrientedBoundingBox as Obb_msg
 from tf2_msgs.msg import TFMessage
 import tf2_ros
@@ -29,43 +29,31 @@ import open3d
 
 
 
-def callback(mesh,tfBuffer ,pub, viz_pub,viz_pose):
+def callback( mesh,tfBuffer, pub, viz_pub,viz_pose,rate):
     meshPoints = np.array([np.asarray([vertex.x,vertex.y,vertex.z]) for vertex in mesh.mesh_geometry.vertices])
-    # print(meshPoints.shape)
-    # for spot obsatcel height threshold set as - 5.3
-    
+
     try:
-        trans = tfBuffer.lookup_transform('odom', 'gpe', rospy.Time())
-        # sel_map = tfBuffer.lookup_transform('odom', 'sel_map', rospy.Time())
-        # print(sel_map.transform.rotation)
-        
+        trans = tfBuffer.lookup_transform( 'odom', 'base_link', rospy.Time())
+            
     except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException): 
         return
-    meshPoints_thres = meshPoints[meshPoints[:,2] > -5.29]
 
-    # print("id: ", mesh.header.seq, "; point: ", np.amax(meshPoints[:,2]))
-    # # print(meshPoints2D.shape)
-    # print("transform gpe,", trans.transform.translation.z)
-    # ground wrt to robot frame
-    ground_ = trans.transform.translation.z 
+    height_thres = trans.transform.translation.z -1.3 + 0.025     # 25cm
+    print(height_thres)
 
-    height_thres = ground_ + 0.025     # 25cm
-    # print(height_thres)
-
-    # meshPoints_thres = meshPoints[meshPoints[:,2] > height_thres]
+    meshPoints_thres = meshPoints[meshPoints[:,2] > height_thres]
 
     try:
-
+        # distance threshold to be linked with rosparam
         model = AgglomerativeClustering(n_clusters = None , linkage="single", affinity="euclidean", distance_threshold = 0.071)
         model.fit(meshPoints_thres[:,:2])
     except:
         print("Clustring error")
         return
 
-    # print(model.labels_)
+    print(model.labels_)
     
-    # hulls_2d = []
-    # hulls_2d_points = []
+
     clusters_points = []
     cluster_orignal = []
     obstacle_bbs = []
@@ -95,64 +83,27 @@ def callback(mesh,tfBuffer ,pub, viz_pub,viz_pose):
         cluster_orignal.append(cluster)
         temp1 = np.copy(cluster)
         temp2 = np.copy(cluster)
-        temp1[:,2]= ground_
-        # print(cluster)
-        # print(np.amax(cluster[:,2]))
+
         temp2[:,2]= np.amax(cluster[:,2])
         cluster2D = np.vstack((temp1,temp2))
-        clusters_points.append(cluster2D)
-        # print(cluster)
 
-
-    # print(len(obstacles))
-        # pcd = open3d.geometry.PointCloud(points=open3d.utility.Vector3dVector(cluster2D))
-        # obstacle_bbs.append(pcd.get_oriented_bounding_box( robust =True))
         obstacle_bbs.append(open3d.geometry.OrientedBoundingBox.create_from_points(points=open3d.utility.Vector3dVector(cluster2D), robust = True))
-        # print(obstacle_bbs)
-        # except:
-        #     continue
-
-
-    # points = np.random.rand(50,3)
-    # # print(points   )
-    # # print(open3d.geometry.OrientedBoundingBox.create_from_points(open3d.utility.Vector3dVector(points)))
-    
-
-    
-    
-    # markerarray = MarkerArray()
-    # delmarker = Marker()
-
-    # delmarker.action = delmarker.DELETEALL
-    # markerarray.markers.append(delmarker)
-    # viz_pub.publish(markerarray)
-    # markerarray.markers=  []
 
     
     for i in range(len(obstacle_bbs)):
         Obb = Obb_msg()
         Obb_pose = PoseStamped()
-        # ObbPoseViz = PoseStamped()
+
         Obb_pose.pose.position.x = obstacle_bbs[i].center[0]
         Obb_pose.pose.position.y = obstacle_bbs[i].center[1]
         Obb_pose.pose.position.z = obstacle_bbs[i].center[2]
         
-        
-        # print("Obs - %u"%(i))
+
         
         rot = np.copy(obstacle_bbs[i].R)
-        # print(rot)
-        # print(np.linalg.det(rot))
-        
-        # # print(orient)
-        # if np.linalg.det(rot) < 0:         
-        #     rot =  np.multiply(np.linalg.inv(np.copy(rot)),np.asarray([[-1], [-1.], [-1.] ]))
+
+
         orient = Rotation.from_matrix(rot).as_quat()
-        # orient[:3] = -1*orient[:3]
-        # print(orient)
-        # print(np.linalg.norm(orient))
-        # print(np.linalg.det(rot))
-        # print("......")
 
         
         Obb_pose.pose.orientation.x = orient[0]
@@ -210,74 +161,49 @@ def callback(mesh,tfBuffer ,pub, viz_pub,viz_pose):
         marker.action = marker.ADD
         marker.pose.position = Obb.pose.position
         marker.pose.orientation = Obb.pose.orientation
-        # print(marker.header.stamp)
-        # print(marker.pose.orientation)
-        # marker.pose.orientation.x = 0.
-        # marker.pose.orientation.y = 0.
-        # marker.pose.orientation.z = 0.
-        # marker.pose.orientation.w = 1.
+
         marker.scale.x = Obb.extents.x +0.
         marker.scale.y = Obb.extents.y +0.
         marker.scale.z = Obb.extents.z +0.
-        # marker.scale.x = 0.03
-        # marker.scale.y = 0.03
-        # marker.scale.z = 0.
+
         marker.color.a = 0.8
         marker.color.r = 1.0
         marker.color.g = 0.0
         marker.color.b = 0.0
         marker.frame_locked = True
-        # for i in  range(points.shape[0]) :
-        #     pt = Point()
-        #     c= ColorRGBA()
-        #     point = np.copy(points[i, :])
-        #     # print(point)
-        #     pt.x =  point[0]
-        #     pt.y =  point[1]
-        #     pt.z =  point[2]
-        #     marker.points.append(pt)
-        #     c.a = 0.8
-        #     c.r = 1.0
-        #     c.g = 0.0
-        #     c.b = 0.0
-        #     marker.colors.append(c)
-        # print(marker.points)
+
         viz_pub.publish(marker)
         viz_pose.publish(Obb_pose)
 
-    #     markerarray.markers.append(marker)
-        
-  
-   
-    # viz_pub.publish(markerarray)
-        
-        
-
+        rate.sleep()    
+    
+    
 
 
 def meshSub():
     rospy.init_node('boundingBoxPub', anonymous=True)
     mesh_sub = message_filters.Subscriber("/mesh", MeshGeometryStamped)
-    tf_sub = message_filters.Subscriber("/tf", TFMessage)
+    # tf_sub = message_filters.Subscriber("/tf", TFMessage)
+    imuPose_sub = message_filters.Subscriber("/imu_pose", PoseWithCovarianceStamped)
     # rospy.Subscriber("/mesh", MeshGeometryStamped, callback)
     pub = rospy.Publisher('boundingBox3D', Obb_msg, queue_size=10)
     viz_pub = rospy.Publisher('vizBoundingBox', Marker, queue_size=10)
     viz_pose = rospy.Publisher('vizBoundingBoxPose', PoseStamped, queue_size=10)
 
+    print("node init")
+
 
     tfBuffer = tf2_ros.Buffer()
     listener = tf2_ros.TransformListener(tfBuffer)
-      
+    rate = rospy.Rate(10)
 
     
     # trans = tfBuffer.__get_frames()
 
 
-
+    # while not rospy.is_shutdown():
     ts = message_filters.TimeSynchronizer([mesh_sub], 10)
-    ts.registerCallback(callback, tfBuffer, pub, viz_pub, viz_pose)
-
-
-    rospy.spin()
+    ts.registerCallback(callback, tfBuffer,pub, viz_pub, viz_pose,rate)
+    rospy.spin()    
 if __name__ == '__main__':
     meshSub()

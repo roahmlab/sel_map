@@ -110,6 +110,8 @@ class CameraSensor():
 		# return np.transpose(p3d)
 		return np.transpose(p3d), scores[:,mask].T
 
+		#  do we use direct point cloud output from realsense, so the input will be pc not frames
+
 	def projectMeasurementsIntoSensorFrame_torch(self, intrinsic=None, R=None, min_depth=0, max_depth=5.0):
 		with torch.no_grad():
 			# (Intrinsic) K Matrix
@@ -214,6 +216,8 @@ class CameraSensor():
 		ret[:,2] = J_r[0]*positionCameraToPoint[:,1] - J_r[1]*positionCameraToPoint[:,0]
 		return ret
 
+
+# get pose info here somhow
 	def computePointCovariance_torch(self, point):
 		J_s = self.sensorProjectionJacobian()
 		J_s = torch.from_numpy(J_s).float().to(self.network.device, non_blocking=True)
@@ -261,6 +265,8 @@ class CameraSensor():
 			point_cloud_with_labels = np.column_stack((pc, self.computePointCovariance_test(pc), scores))
 		return point_cloud_with_labels
 
+
+	# so useless funct
 	def getProjectedPointCloudWithoutLabels(self):
 		pc = self.projectMeasurementsIntoSensorFrame(semseg=False)
 
