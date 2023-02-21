@@ -44,8 +44,12 @@ void callback(const nav_msgs::Odometry::ConstPtr& msg, ros::Publisher& cam_pose_
 
   // Eigen::Transform<double, 3, Eigen::Isometry>& T;
 
-  Eigen::Vector3d trans_robot_cam (0.127, 0.0175, -0.1878);
-  Eigen::Quaterniond rot_robot_cam (0.9624552,0.0, 0.2714404, 0.0 );
+  // Eigen::Vector3d trans_robot_cam (0.127, 0.0175, -0.1878);
+  // Eigen::Quaterniond rot_robot_cam (0.9624552,0.0, 0.2714404, 0.0 );
+
+  // for azure
+  Eigen::Vector3d trans_robot_cam (0.1278, 0.0632, -0.3232);
+  Eigen::Quaterniond rot_robot_cam (0.4971991,-0.3710001, 0.7441105, 0.2478942 );
 
   // cout << "w"<< rot_robot_cam.w()<< "y"<<rot_robot_cam.y() << endl;
   
@@ -57,7 +61,7 @@ void callback(const nav_msgs::Odometry::ConstPtr& msg, ros::Publisher& cam_pose_
 
     // Eigen::Vector3d trans (tf_msg.transform.translation.x, tf_msg.transform.translation.y, tf_msg.transform.translation.z);
   cam_pose_msg.header = msg->header;
-  cam_pose_msg.header.frame_id = "odom";
+  cam_pose_msg.header.frame_id = "odom2";
   cam_pose_msg.pose = msg->pose.pose;
 
   cam_pose_msg.pose.position.x += trans_robot_cam[0];

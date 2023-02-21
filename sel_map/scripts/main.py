@@ -22,7 +22,7 @@ savingFlag = False
 initialTime = None
 save_interval = rospy.Duration(0,0)
 last_save = rospy.Duration(0,0)
-world_base = "odom"
+# world_base = "odom"
 
 # EXTRA
 threaded = True
@@ -119,7 +119,7 @@ def sel_map_node(mesh_bounds, elementLength, thresholdElemToMove):
     save_confidence = rospy.get_param("save_confidence", False)
     save_interval = rospy.get_param("save_interval", 0)
     save_interval = rospy.Duration.from_sec(save_interval)
-    world_base = rospy.get_param("world_base", "odom")
+    world_base = rospy.get_param("world_base", "odom2")
 
     cameras = rospy.get_param("cameras_registered", None)
     cameras = list(cameras.items())[0][1]

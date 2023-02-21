@@ -1,6 +1,6 @@
 
 # Specify what the robot base is and what the world base is
-world_base: map
+world_base: odom2
 robot_base: base_link
 
 # TODO
@@ -9,13 +9,14 @@ update_policy: fifo
 # Configurable section
 cameras_registered:
   realsense:
-    image_rectified: /camera/color/image_raw
-    depth_registered: /camera/aligned_depth_to_color/image_raw
-    camera_info: /camera/aligned_depth_to_color/camera_info
+    image_rectified: /k4a/rgb/image_decomp
+    depth_registered: /k4a/depth_to_rgb/image_decomp
+    camera_info: /k4a/depth_to_rgb/camera_info
     # By not specifying these, we lookup the transform frame instead. (They do no need to be specified)
     pose_with_covariance: ''
     # pose: /realsCamPose
-    pose: '/sel_map/cam_pose'
+    # pose: '/sel_map/cam_pose'
+    # pose: ''
     # odom: '/odometry/imu'
 # TODO: make the below work
 #cameras_raw:
@@ -24,17 +25,17 @@ cameras_registered:
 # child link to keep uniqueness. 
 # last working angle 31.5 
 # joints: 
-#   camera_link:
+#   depth_camera_link:
 #     parent: base_link
 #     translation:
-#       x: 0.127 
-#       y: 0.0175
-#       z: -0.1878
+#       x: 0.1278
+#       y: 0.632 
+#       z: -0.3232
 #     rotation:
-#       x: 0.0
-#       y: 0.2714404
-#       z: 0.0
-#       w: 0.9624552
+#       x: -0.3710001
+#       y: 0.7441105
+#       z: 0.2478942
+#       w: 0.4971991
 
   # camera_link:
   #   parent: lidar_body

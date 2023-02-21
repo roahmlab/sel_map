@@ -10,8 +10,8 @@
   <!-- Data Specific Properties -->
   <arg name="terrain_properties"  default="csail_semseg_properties.yaml"/>
   <arg name="colorscale"  default="default.yaml"/>
-  <arg name="robot_config" default="digit.yaml"/>
-  <arg name="semseg_config"         default="Encoding_ResNet50_ADE_onehot.yaml"/>
+  <arg name="robot_config" default="azure_digit.yaml"/>
+  <arg name="semseg_config"         default="CSAIL_ResNet50ppm_ADE_full.yaml"/>
   <arg name="camera_flipped"        default="false"/>
 
   <!-- Visualization Properties -->
@@ -55,8 +55,8 @@
     <rosparam command="load" file="$(find sel_map)/config/semseg/$(arg semseg_config)" />
     <rosparam command="load" file="$(find sel_map)/config/colorscales/$(arg colorscale)"/>
 
-    <node name="color_repub" pkg="image_transport" type="republish" args="theora in:=/camera/color/image_raw raw out:=/camera/color/image_decomp" />
-    <node name="depth_repub" pkg="image_transport" type="republish" args="compressedDepth in:=/camera/aligned_depth_to_color/image_raw raw out:=/camera/aligned_depth_to_color/image_decomp"/>
+    <node name="color_repub" pkg="image_transport" type="republish" args="compressed in:=/k4a/rgb/image_raw raw out:=/k4a/rgb/image_decomp" />
+    <node name="depth_repub" pkg="image_transport" type="republish" args="compressedDepth in:=/k4a/depth_to_rgb/image_raw raw out:=/k4a/depth_to_rgb/image_decomp"/>
     <!-- <node name="depth_repub" pkg="image_transport" type="republish" args="compressedDepth in:=/camera/depth/image_rect_raw raw out:=/camera/depth/image_decomp"/> -->
     
     <node name="static_tf_linker" pkg="sel_map_utils" type="StaticTFLinker.py"
@@ -82,6 +82,6 @@
       <remap from="get_materials" to="/get_materials" />
     </node>
     <!-- <node name="boundingBoxPub" pkg="sel_map" type="boundingBoxPub.py" output="screen"/> -->
-    <node name="odom_adapt" pkg="sel_map" type="odom_adapt" />
+    <!-- <node name="odom_adapt" pkg="sel_map" type="odom_adapt" /> -->
   </group>
 </launch>
