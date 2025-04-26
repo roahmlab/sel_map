@@ -1,0 +1,74 @@
+# User configuration file
+# Important for initial setup
+# The first three are needed for the project-pages theme.
+plugins:
+  - jekyll-seo-tag        # Easy SEO
+  - jekyll-remote-theme   # So we can use the theme
+  - jekyll-default-layout # So we can use the theme easily
+  # If you have additional plugins, you can add them here.
+  # Make sure GitHub supports them here: https://pages.github.com/versions/
+
+# Don't change! (or do change if you really want ig)
+remote_theme: BuildingAtom/project-pages@v1.3-theme
+
+# Metadata and SEO-helper stuff
+# This title here should correspond to your base site or as a shared title
+title: "SEL Map: Semantic Elevation Map - Real-time Terrain Property Estimation for Mobile Robots"
+baseurl: "/sel_map" # the subpath of your site, e.g. /blog
+url: "https://roahmlab.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+# This sets window title, not the title you read on the page
+title-format: site # options are page-site, page, site.
+lang: en
+
+# Shenanigans from the template default because that's actually not a thing.
+credit:
+  copyright-symbol: false
+  text: >- # supports markdown
+    [Project pages template](https://www.github.com/BuildingAtom/project-pages)
+    built by Adam Li / [@BuildingAtom](https://www.github.com/BuildingAtom)
+
+# Hide the credits in the footer by setting this false.
+show-credit: false
+
+# Disable the footer by just setting the above false AND making the below blank
+footer:
+  # connections-pre: # This prefixes the connections section at the botom.
+  # connections-post: Socials
+  connections:
+    github: https://github.com/roahmlab/sel_map
+    arxiv: https://arxiv.org/abs/2205.12925
+  # related-sites:
+  #   sites:
+  #     - text: Base Example
+  #       href: /project-pages/
+  #       icon: bi-box-arrow-left
+  #       icon-library: bootstrap-icons
+  #     - text: SEL Map Example
+  #       href: /project-pages/sel_map
+  #       icon: bi-map
+  #       icon-library: bootstrap-icons
+  #     - text: ARMOUR Example
+  #       href: /project-pages/armour-dev
+  #       icon: bi-bezier2
+  #       icon-library: bootstrap-icons
+
+
+# Only leave the icon libraries you want to use enabled.
+# The supported libraries are:
+#
+# simpleicons (no need to enable), bootstrap-icons, css.gg,
+# ionicons, feathericons, academicons
+#
+# simpleicons doesn't require any extra loading.
+icon-libraries:
+  - bootstrap-icons
+
+# Keep mathjax disabled because it's a bit expensive. (Disabled by default)
+# You can enable this on a page-by-page basis, if you somehow are using mutliple pages.
+mathjax: false
+
+# Code highlighter
+highlighter: rouge
+
+# There is room for extra SEO shenanigans. jekyll-seo-tag is included,
+# so check out that repo to see what you can do.

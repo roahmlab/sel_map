@@ -1,0 +1,51 @@
+---
+# Import main from _sass
+---
+
+///////////////////////////////////////
+// load fonts data here
+// Change these values through _data/fonts.yml instead of here!
+///////////////////////////////////////
+$data-base-font: {{ site.data.fonts.base-font | strip }};
+$data-title-font: {{ site.data.fonts.title-font | strip }};
+$data-subtitle-font: {{ site.data.fonts.subtitle-font | strip }};
+$data-heading-font: {{ site.data.fonts.heading-font | strip }};
+$data-fonts: ({%- for font in site.data.fonts.fonts -%}{{ font.class }}: {{- font.font | strip -}}{%- unless forloop.last -%}, {%- endunless -%}{%- endfor -%});
+
+///////////////////////////////////////
+// Edit settings below here (ALL DEFAULTS SHOWN)
+///////////////////////////////////////
+
+// // full width of overall site
+// $full-width:        1000px;
+// $mobile-width:      500px;
+
+// $base-font-size:    16px;
+// $tablet-font-scale: 0.88;
+// $mobile-font-scale: 0.75;
+// $title-font-scale:  3.33;
+// $description-font-size:  1.66em;
+// $description-max-width:  $full-width;
+// $authors-base-font-size: 1.25em;
+// $base-font-weight:  400;
+// $small-font-size:   0.8rem;
+// $base-line-height:  1.75;
+
+// $spacing-unit:      1.8rem;
+
+// //add themeing later
+// $text-color:        #111;
+// $heading-color:     #000000AA;
+// $heading-weight:    300;
+// $background-color:  #fff;
+// $link-color:		#3B7CC1;
+
+// $grey-color:        #828282;
+
+// // https://codepen.io/sosuke/pen/Pjoqqp if you want to change the color
+// // #707070 here
+// $social-icon-filter: invert(43%) sepia(3%) saturate(20%) hue-rotate(330deg) brightness(99%) contrast(87%);
+
+// $table-text-align:  left;
+
+@import "{{ site.theme }}";

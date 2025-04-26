@@ -1,0 +1,38 @@
+# Additional Fonts using Google Fonts (copy the last href from google fonts)
+# Review README for more details.
+google-fonts-href:
+  - "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Cabin:wght@300;400;700&display=swap"
+  - "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap"
+
+# Specify your fonts for your site.
+# If a section's font isn't specified, it will use the base font
+# You can specify title-font, subtitle-font, heading-font.
+# subtitle-font is used for the description
+# Body font will always be the base-font.
+base-font: >
+  "Noto Sans"
+
+title-font: >
+  "Cabin"
+
+subtitle-font: >
+  "Noto Sans"
+
+heading-font: >
+  "Noto Sans"
+
+# Additional font classes for inline usage can be specified below
+fonts:
+  - class: jp
+    font: >
+      "Noto Sans JP"
+  - class: sc
+    font: >
+      "Noto Sans SC"
+  - class: kr
+    font: >
+      "Noto Sans KR"
+  - class: cabin
+    font: >
+      "Cabin"
+
