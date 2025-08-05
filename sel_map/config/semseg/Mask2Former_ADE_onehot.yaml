@@ -1,0 +1,13 @@
+semseg:
+  package: hf_transformers_wrapper
+  # model: facebook/mask2former-swin-tiny-ade-semantic
+  model: facebook/mask2former-swin-small-ade-semantic
+  # model: facebook/mask2former-swin-base-ade-semantic
+  # model: facebook/mask2former-swin-base-IN21k-ade-semantic
+  # model: facebook/mask2former-swin-large-ade-semantic
+  extra_args: []
+  num_labels: 150
+  ongpu_projection: True
+  # The following is only useful for when there are many labels, like 120+
+  # It should be benchmarked on a per-system basis
+  onehot_projection: True
